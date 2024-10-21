@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LIBDG
+{
+    public class Librarian : Person, IBorrowable //thủ thư triển khai IBorrowable để thực hiện các hành vi mượn sách nếu cần.
+    {
+        public int LibrarianID { get; set; }
+
+        public Librarian(int librarianID, string name, string email) : base (name, email)  
+        {
+            LibrarianID = librarianID; 
+        }
+        public override void Login()
+        {
+            Console.WriteLine($"{Name} (Thủ thư) đã đăng nhập. ");    
+        }
+        public void ManageBooks()
+        {
+            Console.WriteLine($"{Name} is managing the books.");
+        }
+
+        public void ManageMembers()
+        {
+            Console.WriteLine($"{Name} is managing the members.");
+        }
+
+        public void BorrowBook(Book book)
+        {
+            Console.WriteLine($"{Name} is borrowing a book for the library.");
+        }
+
+        public void ReturnBook(Book book)
+        {
+            Console.WriteLine($"{Name} is returning a book to the library.");
+        }
+    }
+
+}
