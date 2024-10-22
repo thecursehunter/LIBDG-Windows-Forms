@@ -10,12 +10,15 @@ namespace LIBDG
         public string Name { get; set; }
         public string Email { get; set; }
 
-        public void Login()
+        public Person() { }
+
+        public Person(string name, string email)
         {
-            Console.WriteLine($"{Name} has logged in.");
-            Console.WriteLine("TBB");
+            Name = name;
+            Email = email;
         }
-        //chứa các thuộc tính và phương thức chung giữa Member và Librarian.
-        
+
+        public abstract void Login();
     }
 }
+
