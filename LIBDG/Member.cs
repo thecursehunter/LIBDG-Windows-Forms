@@ -10,12 +10,12 @@ namespace LIBDG
     {
         public int MemberID { get; set; }
 
-        public void BorrowBook() //thực hiện việc mượn sách
+        public void BorrowBook(Book book) //thực hiện việc mượn sách
         {
             Console.WriteLine($"{Name} is borrowing a book."); 
         }
 
-        public void ReturnBook() //thực hiện việc trả sách 
+        public void ReturnBook(Book book) //thực hiện việc trả sách 
         {
             Console.WriteLine($"{Name} is returning a book.");
         }
