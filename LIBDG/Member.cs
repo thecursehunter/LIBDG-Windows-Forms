@@ -1,15 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Text.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace LIBDG
 {
+    [Serializable]
     public class Member : Person, IBorrowable, ISerializable
     {
         public int MemberID { get; set; }
 
+        public Member() { }
+        protected Member(SerializationInfo info, StreamingContext context)
+        {
+            MemberID = info.GetInt32("MemberID");
+        }
+        public void GetObjectData (SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("MemberID", MemberID);
+        }
         public void BorrowBook(Book book) //thực hiện việc mượn sách
         {
             Console.WriteLine($"{Name} is borrowing a book."); 

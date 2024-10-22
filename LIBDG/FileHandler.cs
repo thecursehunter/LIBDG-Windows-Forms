@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
+
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LIBDG
 {
@@ -20,6 +22,21 @@ namespace LIBDG
         {
             Console.WriteLine($"Deserializing data from {FilePath}");
             obj.DeserializeData();
+        }
+
+        public void SaveInfoMember(Member member)
+        {
+            try 
+            {
+                string jsonData = JsonSerializer.Serialize(member);
+                File.WriteAllText(FilePath, jsonData);
+                MessageBox.Show("Member data saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Fail to save member data!: {ex.Message}", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+               
         }
     }
 
