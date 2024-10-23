@@ -14,15 +14,46 @@ namespace LIBDG
         public int PublishedYear { get; set; }
         public int AvailableCopies { get; set; }
 
+        public Book() { }
+
+        public Book(string title, string author, string isbn, int year, int copies)
+        {
+            Title = title;
+            Author = author;
+            ISBN = isbn;
+            PublishedYear = year;
+            AvailableCopies = copies;
+        }
+
+        public void BorrowBook()
+        {
+            if (AvailableCopies > 0)
+            {
+                AvailableCopies--;
+                Console.WriteLine($"{Title} has been borrowed. Copies left: {AvailableCopies}");
+            }
+            else
+            {
+                Console.WriteLine($"{Title} is currently not available.");
+            }
+        }
+
+        public void ReturnBook()
+        {
+            AvailableCopies++;
+            Console.WriteLine($"{Title} has been returned. Copies now: {AvailableCopies}");
+        }
+
         public void SerializeData()
         {
-            Console.WriteLine("Serializing Book data.");
+            Console.WriteLine($"Serializing book: {Title}");
+            // Logic for serializing Book object
         }
 
         public void DeserializeData()
         {
-            Console.WriteLine("Deserializing Book data.");
+            Console.WriteLine($"Deserializing book: {Title}");
+            // Logic for deserializing Book object
         }
     }
-
 }
