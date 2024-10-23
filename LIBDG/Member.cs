@@ -20,7 +20,26 @@ namespace LIBDG
             Console.WriteLine($"{Name} has logged in.");
         }
 
-        public void BorrowBook(Book book)
+
+        public void SerializeData(string filePath)
+        {
+            
+            JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonData = JsonSerializer.Serialize<Member>(this, options);
+            File.WriteAllText(filePath, jsonData);
+        }
+
+        public static Member DeserializeData(string filePath)
+        {
+            string jsonData = File.ReadAllText(filePath);
+            
+            Member member = JsonSerializer.Deserialize<Member>(jsonData);
+            return member;
+        }
+        public void BorrowBook(Book book) //thực hiện việc mượn sách
+
+        
+
         {
             book.BorrowBook();
             Console.WriteLine($"{Name} has borrowed the book: {book.Title}");
