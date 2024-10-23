@@ -12,31 +12,36 @@ namespace LIBDG
     {
         public string FilePath { get; set; }
 
-        public void SerializeData(ISerializable obj)
-        {
-            Console.WriteLine($"Serializing data to {FilePath}");
-            obj.SerializeData();
-        }
+        //public void SerializeData(ISerializable obj)
+        //{
+        //    Console.WriteLine($"Serializing data to {FilePath}");
+        //    obj.SerializeData();
+        //}
 
-        public void DeserializeData(ISerializable obj)
-        {
-            Console.WriteLine($"Deserializing data from {FilePath}");
-            obj.DeserializeData();
-        }
+        //public void DeserializeData(ISerializable obj)
+        //{
+        //    Console.WriteLine($"Deserializing data from {FilePath}");
+        //    obj.DeserializeData();
+        //}
 
-        public void SaveInfoMember(Member member)
+        public void SaveMemberInfo(Member member)
         {
-            try 
+            try
             {
-                string jsonData = JsonSerializer.Serialize(member);
-                File.WriteAllText(FilePath, jsonData);
+                
+                member.SerializeData(FilePath);
                 MessageBox.Show("Member data saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show($"Fail to save member data!: {ex.Message}", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-               
+        }
+
+        public Member LoadMember()
+        {
+            Member member = Member.DeserializeData(FilePath);
+            return member;
         }
     }
 

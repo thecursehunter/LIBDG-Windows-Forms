@@ -22,6 +22,22 @@ namespace LIBDG
         {
             info.AddValue("MemberID", MemberID);
         }
+
+        public void SerializeData(string filePath)
+        {
+            
+            JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonData = JsonSerializer.Serialize<Member>(this, options);
+            File.WriteAllText(filePath, jsonData);
+        }
+
+        public static Member DeserializeData(string filePath)
+        {
+            string jsonData = File.ReadAllText(filePath);
+            
+            Member member = JsonSerializer.Deserialize<Member>(jsonData);
+            return member;
+        }
         public void BorrowBook(Book book) //thực hiện việc mượn sách
         {
             Console.WriteLine($"{Name} is borrowing a book."); 
