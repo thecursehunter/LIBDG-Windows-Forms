@@ -42,5 +42,11 @@ namespace LIBDG
             AddStudent ads = new AddStudent();
             ads.Show();
         }
+
+        private void StripMenuViewStudent_Click(object sender, EventArgs e)
+        {
+            ViewStudentInformation vsi = new ViewStudentInformation();
+            vsi.Show();
+        }
     }
 }
