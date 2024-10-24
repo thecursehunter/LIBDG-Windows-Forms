@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
+
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LIBDG
 {
@@ -10,16 +12,36 @@ namespace LIBDG
     {
         public string FilePath { get; set; }
 
-        public void SerializeData(ISerializable obj)
+        //public void SerializeData(ISerializable obj)
+        //{
+        //    Console.WriteLine($"Serializing data to {FilePath}");
+        //    obj.SerializeData();
+        //}
+
+        //public void DeserializeData(ISerializable obj)
+        //{
+        //    Console.WriteLine($"Deserializing data from {FilePath}");
+        //    obj.DeserializeData();
+        //}
+
+        public void SaveMemberInfo(Member member)
         {
-            Console.WriteLine($"Serializing data to {FilePath}");
-            obj.SerializeData();
+            try
+            {
+                
+                member.SerializeData(FilePath);
+                MessageBox.Show("Member data saved!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Fail to save member data!: {ex.Message}", "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        public void DeserializeData(ISerializable obj)
+        public Member LoadMember()
         {
-            Console.WriteLine($"Deserializing data from {FilePath}");
-            obj.DeserializeData();
+            Member member = Member.DeserializeData(FilePath);
+            return member;
         }
     }
 

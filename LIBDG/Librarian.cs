@@ -19,12 +19,12 @@ namespace LIBDG
             Console.WriteLine($"{Name} is managing the members.");
         }
 
-        public void BorrowBook()
+        public void BorrowBook(Book book)
         {
             Console.WriteLine($"{Name} is borrowing a book for the library.");
         }
 
-        public void ReturnBook()
+        public void ReturnBook(Book book)
         {
             Console.WriteLine($"{Name} is returning a book to the library.");
         }
