@@ -21,14 +21,14 @@ namespace LIBDG
             Book = book;
             BorrowDate = borrowDate;
             ReturnDate = returnDate;
-            IsReturned = false; // Ban đầu sách chưa được trả
+            IsReturned = false; 
         }
 
         public void CompleteBorrowing()
         {
             if (Book.AvailableCopies > 0)
             {
-                Member.BorrowBook(Book); // Mượn sách
+                Member.BorrowBook(Book); 
                 Console.WriteLine($"Transaction {TransactionID} completed: {Member.Name} borrowed {Book.Title}.");
             }
             else
@@ -37,12 +37,12 @@ namespace LIBDG
             }
         }
 
-        // Hoàn thành giao dịch trả sách
+        
         public void CompleteReturn()
         {
             if (!IsReturned)
             {
-                Member.ReturnBook(Book); // Trả sách
+                Member.ReturnBook(Book); 
                 IsReturned = true;
                 Console.WriteLine($"Transaction {TransactionID} completed: {Member.Name} returned {Book.Title}.");
             }
@@ -51,7 +51,7 @@ namespace LIBDG
                 Console.WriteLine($"This transaction has already been completed (book returned).");
             }
         }
-        // kiểm tra xem sách có bị quá hạn không
+        
         public bool IsOverdue()
         {
             if (!IsReturned && DateTime.Now > ReturnDate)
@@ -74,7 +74,7 @@ namespace LIBDG
                 Console.WriteLine($"Cannot extend borrowing period. The book has already been returned.");
             }
         }
-        //Hiển thị thông tin giao dịch 
+        
         public void DisplayTransactionInfo()
         {
             string status = IsReturned ? "Returned" : "Not Returned";

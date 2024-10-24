@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace LIBDG
 {
-    public class Librarian : Person, IBorrowable //thủ thư triển khai IBorrowable để thực hiện các hành vi mượn sách nếu cần.
+    public class Librarian : Person, IBorrowable 
     {
         public int LibrarianID { get; set; }
 

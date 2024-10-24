@@ -12,5 +12,5 @@ namespace LIBDG
         void ReturnBook(Book book);
     }
     
-    // Áp dụng cho các đối tượng có khả năng mượn và trả sách, như Member và Librarian.
+    
 }
