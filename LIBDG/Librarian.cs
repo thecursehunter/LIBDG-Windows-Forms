@@ -28,6 +28,11 @@ namespace LIBDG
         {
             Console.WriteLine($"{Name} is returning a book to the library.");
         }
+
+        public override void Login () 
+        {
+        
+        }
     }
 
 }
