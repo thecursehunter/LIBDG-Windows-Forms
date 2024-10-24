@@ -81,7 +81,6 @@
       <DependentUpon>AddBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Book.cs" />
-    <Compile Include="BorrowTransaction.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
