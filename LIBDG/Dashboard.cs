@@ -36,5 +36,11 @@ namespace LIBDG
             ViewBook vbs = new ViewBook();
             vbs.Show();
         }
+
+        private void ToolStripAddStudent_Click(object sender, EventArgs e)
+        {
+            AddStudent ads = new AddStudent();
+            ads.Show();
+        }
     }
 }
