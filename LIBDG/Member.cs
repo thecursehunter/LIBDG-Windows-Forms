@@ -12,9 +12,11 @@ namespace LIBDG
     {
         public int MemberID { get; set; }
 
+        public Member() { }
         public Member(int memberId, string name, string email) : base(name, email)
         {
             MemberID = memberId;
+
         }
 
         public override void Login()
@@ -22,26 +24,44 @@ namespace LIBDG
             Console.WriteLine($"{Name} has logged in.");
         }
 
-
-        public void SerializeData(string filePath)
+        public void SerializeData(string FilePath)
         {
-            
-            JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonData = JsonSerializer.Serialize<Member>(this, options);
-            File.WriteAllText(filePath, jsonData);
+            try
+            {
+                string jsonData = JsonSerializer.Serialize(this);
+                File.WriteAllText(FilePath, jsonData);  // Ghi dữ liệu JSON ra file
+                Console.WriteLine($"Member data serialized to {FilePath}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error serializing member: {ex.Message}");
+            }
         }
 
-        public static Member DeserializeData(string filePath)
+        public void DeserializeData(string FilePath) 
         {
-            string jsonData = File.ReadAllText(filePath);
-            
-            Member member = JsonSerializer.Deserialize<Member>(jsonData);
-            return member;
+            try
+            {
+                string jsonData = File.ReadAllText(FilePath);
+                Member deserializedMember = JsonSerializer.Deserialize<Member>(jsonData);
+
+                if (deserializedMember != null)
+                {
+                    this.Name = deserializedMember.Name;
+                    this.Email = deserializedMember.Email;
+                    this.MemberID = deserializedMember.MemberID;
+                }
+
+                Console.WriteLine($"Member data deserialized from {FilePath}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deserializing member: {ex.Message}");
+            }
         }
-        public void BorrowBook(Book book) //thực hiện việc mượn sách
 
-        
 
+        public void BorrowBook(Book book)      
         {
             book.BorrowBook();
             Console.WriteLine($"{Name} has borrowed the book: {book.Title}");
@@ -51,18 +71,6 @@ namespace LIBDG
         {
             book.ReturnBook();
             Console.WriteLine($"{Name} has returned the book: {book.Title}");
-        }
-
-        public void SerializeData()
-        {
-            Console.WriteLine($"Serializing member: {Name}");
-            
-        }
-
-        public void DeserializeData()
-        {
-            Console.WriteLine($"Deserializing member: {Name}");
-           
         }
 
     }

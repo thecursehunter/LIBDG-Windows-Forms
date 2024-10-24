@@ -32,12 +32,12 @@ namespace LIBDG
             Console.WriteLine("Generating a library report.");
         }
 
-        public void SerializeData()
+        public void SerializeData(string FilePath)
         {
             Console.WriteLine("Serializing Library data.");
         }
 
-        public void DeserializeData()
+        public void DeserializeData(string FilePath)
         {
             Console.WriteLine("Deserializing Library data.");
         }
