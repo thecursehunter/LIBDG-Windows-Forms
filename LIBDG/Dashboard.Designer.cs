@@ -35,7 +35,7 @@
             this.ToolStripViewBooks = new System.Windows.Forms.ToolStripMenuItem();
             this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripAddStudent = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewStudentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StripMenuViewStudent = new System.Windows.Forms.ToolStripMenuItem();
             this.issueBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.completeBookDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,7 +95,7 @@
             // 
             this.studentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripAddStudent,
-            this.viewStudentToolStripMenuItem});
+            this.StripMenuViewStudent});
             this.studentToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studentToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.studentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("studentToolStripMenuItem.Image")));
@@ -112,13 +112,14 @@
             this.ToolStripAddStudent.Text = "Add Student";
             this.ToolStripAddStudent.Click += new System.EventHandler(this.ToolStripAddStudent_Click);
             // 
-            // viewStudentToolStripMenuItem
+            // StripMenuViewStudent
             // 
-            this.viewStudentToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
-            this.viewStudentToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("viewStudentToolStripMenuItem.Image")));
-            this.viewStudentToolStripMenuItem.Name = "viewStudentToolStripMenuItem";
-            this.viewStudentToolStripMenuItem.Size = new System.Drawing.Size(198, 40);
-            this.viewStudentToolStripMenuItem.Text = "View Student";
+            this.StripMenuViewStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
+            this.StripMenuViewStudent.Image = ((System.Drawing.Image)(resources.GetObject("StripMenuViewStudent.Image")));
+            this.StripMenuViewStudent.Name = "StripMenuViewStudent";
+            this.StripMenuViewStudent.Size = new System.Drawing.Size(198, 40);
+            this.StripMenuViewStudent.Text = "View Student";
+            this.StripMenuViewStudent.Click += new System.EventHandler(this.StripMenuViewStudent_Click);
             // 
             // issueBooksToolStripMenuItem
             // 
@@ -166,7 +167,7 @@
             this.ClientSize = new System.Drawing.Size(1008, 537);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Dashboard";
             this.Text = "Dashboard";
@@ -185,7 +186,7 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripViewBooks;
         private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripAddStudent;
-        private System.Windows.Forms.ToolStripMenuItem viewStudentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StripMenuViewStudent;
         private System.Windows.Forms.ToolStripMenuItem issueBooksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem returnBooksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem completeBookDetailsToolStripMenuItem;
