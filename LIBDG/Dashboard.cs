@@ -54,5 +54,17 @@ namespace LIBDG
             IssueBook isb = new IssueBook();
             isb.Show();
         }
+
+        private void ToolStripReturnBooks_Click(object sender, EventArgs e)
+        {
+            ReturnBook rb = new ReturnBook();
+            rb.Show();
+        }
+
+        private void ToolStripCompleteBookDetails_Click(object sender, EventArgs e)
+        {
+           CompleteBookDetail cbd = new CompleteBookDetail();
+            cbd.Show();
+        }
     }
 }
