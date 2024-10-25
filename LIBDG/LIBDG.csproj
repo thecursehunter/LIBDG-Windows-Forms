@@ -94,6 +94,12 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="FileHandler.cs" />
+    <Compile Include="IssueBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IssueBook.Designer.cs">
+      <DependentUpon>IssueBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssueBook.resx">
+      <DependentUpon>IssueBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

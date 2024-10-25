@@ -48,5 +48,11 @@ namespace LIBDG
             ViewStudentInformation vsi = new ViewStudentInformation();
             vsi.Show();
         }
+
+        private void ToolStripissueBooks_Click(object sender, EventArgs e)
+        {
+            IssueBook isb = new IssueBook();
+            isb.Show();
+        }
     }
 }
