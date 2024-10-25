@@ -87,6 +87,12 @@
       <DependentUpon>AddStudent.cs</DependentUpon>
     </Compile>
     <Compile Include="Book.cs" />
+    <Compile Include="CompleteBookDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompleteBookDetail.Designer.cs">
+      <DependentUpon>CompleteBookDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ReturnBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnBook.Designer.cs">
+      <DependentUpon>ReturnBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Transaction.cs" />
     <Compile Include="ViewBook.cs">
       <SubType>Form</SubType>
@@ -138,6 +150,9 @@
     <EmbeddedResource Include="AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CompleteBookDetail.resx">
+      <DependentUpon>CompleteBookDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +166,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnBook.resx">
+      <DependentUpon>ReturnBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewBook.resx">
       <DependentUpon>ViewBook.cs</DependentUpon>

@@ -37,8 +37,8 @@
             this.ToolStripAddStudent = new System.Windows.Forms.ToolStripMenuItem();
             this.StripMenuViewStudent = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripissueBooks = new System.Windows.Forms.ToolStripMenuItem();
-            this.returnBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.completeBookDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripReturnBooks = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripCompleteBookDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -51,8 +51,8 @@
             this.booksToolStripMenuItem,
             this.studentToolStripMenuItem,
             this.ToolStripissueBooks,
-            this.returnBooksToolStripMenuItem,
-            this.completeBookDetailsToolStripMenuItem,
+            this.ToolStripReturnBooks,
+            this.ToolStripCompleteBookDetails,
             this.ToolStripExit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -132,23 +132,25 @@
             this.ToolStripissueBooks.Text = "Issue Books";
             this.ToolStripissueBooks.Click += new System.EventHandler(this.ToolStripissueBooks_Click);
             // 
-            // returnBooksToolStripMenuItem
+            // ToolStripReturnBooks
             // 
-            this.returnBooksToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.returnBooksToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.returnBooksToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("returnBooksToolStripMenuItem.Image")));
-            this.returnBooksToolStripMenuItem.Name = "returnBooksToolStripMenuItem";
-            this.returnBooksToolStripMenuItem.Size = new System.Drawing.Size(137, 38);
-            this.returnBooksToolStripMenuItem.Text = "Return Books";
+            this.ToolStripReturnBooks.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToolStripReturnBooks.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ToolStripReturnBooks.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripReturnBooks.Image")));
+            this.ToolStripReturnBooks.Name = "ToolStripReturnBooks";
+            this.ToolStripReturnBooks.Size = new System.Drawing.Size(137, 38);
+            this.ToolStripReturnBooks.Text = "Return Books";
+            this.ToolStripReturnBooks.Click += new System.EventHandler(this.ToolStripReturnBooks_Click);
             // 
-            // completeBookDetailsToolStripMenuItem
+            // ToolStripCompleteBookDetails
             // 
-            this.completeBookDetailsToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.completeBookDetailsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.completeBookDetailsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("completeBookDetailsToolStripMenuItem.Image")));
-            this.completeBookDetailsToolStripMenuItem.Name = "completeBookDetailsToolStripMenuItem";
-            this.completeBookDetailsToolStripMenuItem.Size = new System.Drawing.Size(200, 38);
-            this.completeBookDetailsToolStripMenuItem.Text = "Complete Book Details";
+            this.ToolStripCompleteBookDetails.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToolStripCompleteBookDetails.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ToolStripCompleteBookDetails.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripCompleteBookDetails.Image")));
+            this.ToolStripCompleteBookDetails.Name = "ToolStripCompleteBookDetails";
+            this.ToolStripCompleteBookDetails.Size = new System.Drawing.Size(200, 38);
+            this.ToolStripCompleteBookDetails.Text = "Complete Book Details";
+            this.ToolStripCompleteBookDetails.Click += new System.EventHandler(this.ToolStripCompleteBookDetails_Click);
             // 
             // ToolStripExit
             // 
@@ -190,8 +192,8 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripAddStudent;
         private System.Windows.Forms.ToolStripMenuItem StripMenuViewStudent;
         private System.Windows.Forms.ToolStripMenuItem ToolStripissueBooks;
-        private System.Windows.Forms.ToolStripMenuItem returnBooksToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem completeBookDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripReturnBooks;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripCompleteBookDetails;
         private System.Windows.Forms.ToolStripMenuItem ToolStripExit;
     }
 }
