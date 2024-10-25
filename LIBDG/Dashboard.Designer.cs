@@ -36,7 +36,7 @@
             this.studentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripAddStudent = new System.Windows.Forms.ToolStripMenuItem();
             this.StripMenuViewStudent = new System.Windows.Forms.ToolStripMenuItem();
-            this.issueBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripissueBooks = new System.Windows.Forms.ToolStripMenuItem();
             this.returnBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.completeBookDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,12 +50,13 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.booksToolStripMenuItem,
             this.studentToolStripMenuItem,
-            this.issueBooksToolStripMenuItem,
+            this.ToolStripissueBooks,
             this.returnBooksToolStripMenuItem,
             this.completeBookDetailsToolStripMenuItem,
             this.ToolStripExit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1008, 42);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -78,7 +79,7 @@
             this.ToolStripAddNewBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.ToolStripAddNewBooks.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripAddNewBooks.Image")));
             this.ToolStripAddNewBooks.Name = "ToolStripAddNewBooks";
-            this.ToolStripAddNewBooks.Size = new System.Drawing.Size(198, 40);
+            this.ToolStripAddNewBooks.Size = new System.Drawing.Size(165, 22);
             this.ToolStripAddNewBooks.Text = "Add New Books";
             this.ToolStripAddNewBooks.Click += new System.EventHandler(this.ToolStripAddNewBooks_Click);
             // 
@@ -87,7 +88,7 @@
             this.ToolStripViewBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.ToolStripViewBooks.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripViewBooks.Image")));
             this.ToolStripViewBooks.Name = "ToolStripViewBooks";
-            this.ToolStripViewBooks.Size = new System.Drawing.Size(198, 40);
+            this.ToolStripViewBooks.Size = new System.Drawing.Size(165, 22);
             this.ToolStripViewBooks.Text = "View Books";
             this.ToolStripViewBooks.Click += new System.EventHandler(this.ToolStripViewBooks_Click);
             // 
@@ -108,7 +109,7 @@
             this.ToolStripAddStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.ToolStripAddStudent.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripAddStudent.Image")));
             this.ToolStripAddStudent.Name = "ToolStripAddStudent";
-            this.ToolStripAddStudent.Size = new System.Drawing.Size(198, 40);
+            this.ToolStripAddStudent.Size = new System.Drawing.Size(158, 22);
             this.ToolStripAddStudent.Text = "Add Student";
             this.ToolStripAddStudent.Click += new System.EventHandler(this.ToolStripAddStudent_Click);
             // 
@@ -117,18 +118,19 @@
             this.StripMenuViewStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.StripMenuViewStudent.Image = ((System.Drawing.Image)(resources.GetObject("StripMenuViewStudent.Image")));
             this.StripMenuViewStudent.Name = "StripMenuViewStudent";
-            this.StripMenuViewStudent.Size = new System.Drawing.Size(198, 40);
+            this.StripMenuViewStudent.Size = new System.Drawing.Size(158, 22);
             this.StripMenuViewStudent.Text = "View Student";
             this.StripMenuViewStudent.Click += new System.EventHandler(this.StripMenuViewStudent_Click);
             // 
-            // issueBooksToolStripMenuItem
+            // ToolStripissueBooks
             // 
-            this.issueBooksToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.issueBooksToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.issueBooksToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("issueBooksToolStripMenuItem.Image")));
-            this.issueBooksToolStripMenuItem.Name = "issueBooksToolStripMenuItem";
-            this.issueBooksToolStripMenuItem.Size = new System.Drawing.Size(130, 38);
-            this.issueBooksToolStripMenuItem.Text = "Issue Books";
+            this.ToolStripissueBooks.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ToolStripissueBooks.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ToolStripissueBooks.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripissueBooks.Image")));
+            this.ToolStripissueBooks.Name = "ToolStripissueBooks";
+            this.ToolStripissueBooks.Size = new System.Drawing.Size(130, 38);
+            this.ToolStripissueBooks.Text = "Issue Books";
+            this.ToolStripissueBooks.Click += new System.EventHandler(this.ToolStripissueBooks_Click);
             // 
             // returnBooksToolStripMenuItem
             // 
@@ -187,7 +189,7 @@
         private System.Windows.Forms.ToolStripMenuItem studentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripAddStudent;
         private System.Windows.Forms.ToolStripMenuItem StripMenuViewStudent;
-        private System.Windows.Forms.ToolStripMenuItem issueBooksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripissueBooks;
         private System.Windows.Forms.ToolStripMenuItem returnBooksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem completeBookDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripExit;
