@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
 
 namespace LIBDG
 {
@@ -12,14 +15,71 @@ namespace LIBDG
         public List<Member> Members { get; set; }
         public List<Transaction> Transactions { get; set; }
 
-        public void AddBook()
+        private static Library _instance;
+        public static Library Instance
         {
-            Console.WriteLine("Adding a new book to the library.");
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Library();
+                }
+                return _instance;
+            }
+        }
+        private Library() 
+        {
+            Books = new List<Book>();
+            Members = new List<Member>();
+            Transactions = new List<Transaction>();
         }
 
-        public void RemoveBook()
+        
+        public void AddBook(Book newBook)
         {
-            Console.WriteLine("Removing a book from the library.");
+            bool bookExists = false;
+
+            foreach (Book book in Books)
+            {
+                if (book.ISBN == newBook.ISBN) 
+                { 
+                    bookExists = true;
+                    break;               
+                }
+            }
+
+            if (bookExists)
+            {
+                MessageBox.Show("Sach nay da ton tai trong thu vien");
+            }
+            else
+            {
+                Books.Add(newBook);
+                MessageBox.Show("Sach nay da duoc them vao thu vien");
+            }
+        }
+
+        public void RemoveBook(string isbn)
+        {
+            Book removeBook = null;
+            foreach (Book book in Books)
+            {
+                if (book.ISBN == isbn)
+                {
+                    removeBook = book;
+                    break;
+                }
+            }
+
+            if (removeBook != null)
+            {
+                Books.Remove(removeBook);
+                MessageBox.Show($"Sach {removeBook.Title} da duoc xoa khoi thu vien");
+            }
+            else
+            {
+                MessageBox.Show("Khong tim thay sach nay trong thu vien");
+            }
         }
 
         public void RegisterMember()
@@ -34,12 +94,37 @@ namespace LIBDG
 
         public void SerializeData(string FilePath)
         {
-            Console.WriteLine("Serializing Library data.");
+            try
+            {
+                string jsonData = JsonSerializer.Serialize(this);
+                File.WriteAllText(FilePath, jsonData);            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error serializing library: {ex.Message}");
+            }
         }
 
         public void DeserializeData(string FilePath)
         {
-            Console.WriteLine("Deserializing Library data.");
+            try
+            {
+                string jsonData = File.ReadAllText(FilePath);
+                Library deserializedLibrary = JsonSerializer.Deserialize<Library>(jsonData);
+
+                if (deserializedLibrary != null)
+                {
+                    this.Books = deserializedLibrary.Books;
+                    this.Members = deserializedLibrary.Members;
+                    this.Transactions = deserializedLibrary.Transactions;
+                }
+
+                Console.WriteLine($"Library data deserialized from {FilePath}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deserializing library: {ex.Message}");
+            }
         }
     }
 
