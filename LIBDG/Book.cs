@@ -37,7 +37,7 @@ namespace LIBDG
             {
                 string jsonData = JsonSerializer.Serialize(this);
                 File.WriteAllText(FilePath, jsonData);
-                Console.WriteLine($"Book data serialized to {FilePath}");
+                Console.WriteLine($"Book data serialized to {FilePath}");   
             }
             catch (Exception ex)
             {

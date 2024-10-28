@@ -16,5 +16,13 @@ namespace LIBDG
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string title;
+            string author;
+            int publishedYear;
+            string isbn;
+        }
     }
 }
