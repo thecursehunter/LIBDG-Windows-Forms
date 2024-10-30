@@ -84,19 +84,44 @@ namespace LIBDG
             }
 
         }
-        public Book FindBookByISBN(string isbn)
+
+        public void UpdateBook(Book updatedBook, string FilePath)
         {
-            for (int i = 0; i < Books.Count; i++)
+            bool bookFound = false;
+            foreach (Book book in Books)
             {
-                if (Books[i].ISBN == isbn)
+                if (book.ISBN == updatedBook.ISBN)
                 {
-                    Console.WriteLine($"Found book: {Books[i].Title}");
-                    return Books[i];
+                    book.Title = updatedBook.Title;
+                    book.Author = updatedBook.Author;
+                    book.PublishedYear = updatedBook.PublishedYear;
+                    book.AvailableCopies = updatedBook.AvailableCopies;
+                    MessageBox.Show("This book has been updated");
+
+                    SerializeData(FilePath);
+                    bookFound = true;
+                    break;
                 }
             }
-            Console.WriteLine("Book not found.");
-            return null;
+            if(!bookFound)
+            {
+                MessageBox.Show("Cannot find this book to update");
+            }
         }
+        
+            public Book FindBookByISBN(string isbn)
+            {
+                for (int i = 0; i < Books.Count; i++)
+                {
+                    if (Books[i].ISBN == isbn)
+                    {
+                        Console.WriteLine($"Found book: {Books[i].Title}");
+                        return Books[i];
+                    }
+                }
+                Console.WriteLine("Book not found.");
+                return null;
+            }
 
 
 
