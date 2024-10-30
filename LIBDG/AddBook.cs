@@ -39,7 +39,7 @@ namespace LIBDG
             Library.Instance.AddBook(newbook);
             Library.Instance.SerializeData("library.json");
 
-            //MessageBox.Show("Sach nay da duoc them vao thu vien thanh cong", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
 
             textBox1.Clear();
             textBox2.Clear();
