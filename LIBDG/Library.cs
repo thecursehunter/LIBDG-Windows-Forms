@@ -52,12 +52,12 @@ namespace LIBDG
 
             if (bookExists)
             {
-                MessageBox.Show("Sach nay da ton tai trong thu vien");
+                MessageBox.Show("This book has already existed in library");
             }
             else
             {
                 Books.Add(newBook);
-                MessageBox.Show("Sach nay da duoc them vao thu vien");
+                MessageBox.Show("This book has added to library");
             }
         }
 
@@ -76,11 +76,11 @@ namespace LIBDG
             if (removeBook != null)
             {
                 Books.Remove(removeBook);
-                MessageBox.Show($"Sach {removeBook.Title} da duoc xoa khoi thu vien");
+                MessageBox.Show($"Book {removeBook.Title} has already removed from library");
             }
             else
             {
-                MessageBox.Show("Khong tim thay sach nay trong thu vien");
+                MessageBox.Show("Cannot find this book in library");
             }
 
         }
@@ -102,46 +102,51 @@ namespace LIBDG
 
 
         
-        public void RegisterMember(Member member)
+        public void RegisterMember(Member newMember)
         {
             bool memberExists = false;
-            for (int i = 0; i < Members.Count; i++)
+            foreach (Member member in Members)
             {
-                if (Members[i].MemberID == member.MemberID)
-                {
+                if (member.MemberID == newMember.MemberID)
+                { 
                     memberExists = true;
                     break;
                 }
+
+                if (memberExists) 
+                {
+                    MessageBox.Show("This student has already existed in library");
+                }
+
+                else
+                {
+                    Members.Add(newMember);
+                    MessageBox.Show("Added this student to library");
+                }
             }
-            if (!memberExists)
-            {
-                Members.Add(member);
-            }
-            else
-            {
-                Console.WriteLine($"Member with ID {member.MemberID} already exists.");
-            }
+
         }
         public void RemoveMember(int memberID)
         {
             Member memberToRemove = null;
-            for (int i = 0; i < Members.Count; i++)
+            foreach (Member member in Members)
             {
-                if (Members[i].MemberID == memberID)
+                if (member.MemberID == memberID)
                 {
-                    memberToRemove = Members[i];
+                    memberToRemove = member;
                     break;
                 }
-            }
 
-            if (memberToRemove != null)
-            {
-                Members.Remove(memberToRemove);
+                if (memberToRemove != null)
+                {
+                    Members.Remove(memberToRemove);
+                    MessageBox.Show("Removed student from library");
+                }
 
-            }
-            else
-            {
-                Console.WriteLine($"Member with ID {memberID} not found.");
+                else
+                {
+                    MessageBox.Show("Cannot find this student in library");
+                }
             }
         }
         public Member FindMemberByID(int memberID)
