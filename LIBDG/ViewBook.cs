@@ -12,9 +12,11 @@ namespace LIBDG
 {
     public partial class ViewBook : Form
     {
+        private Library library;
         public ViewBook()
         {
             InitializeComponent();
         }
     }
 }
+   
