@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Text.Json;
+using System.Windows.Forms;
 
 
 namespace LIBDG
@@ -30,7 +26,7 @@ namespace LIBDG
             }
         }
 
-        private Library() 
+        private Library()
 
         {
             Books = new List<Book>();
@@ -38,7 +34,7 @@ namespace LIBDG
             Transactions = new List<Transaction>();
         }
 
-  
+
 
         public void AddBook(Book newBook)
         {
@@ -47,10 +43,10 @@ namespace LIBDG
             foreach (Book book in Books)
             {
 
-                if (book.ISBN == newBook.ISBN) 
-                { 
+                if (book.ISBN == newBook.ISBN)
+                {
                     bookExists = true;
-                    break;               
+                    break;
                 }
             }
 
@@ -88,13 +84,79 @@ namespace LIBDG
             }
 
         }
-
-
-
-        public void DisplayAllMember()
+        public Book FindBookByISBN(string isbn)
         {
-
+            for (int i = 0; i < Books.Count; i++)
+            {
+                if (Books[i].ISBN == isbn)
+                {
+                    Console.WriteLine($"Found book: {Books[i].Title}");
+                    return Books[i];
+                }
+            }
+            Console.WriteLine("Book not found.");
+            return null;
         }
+
+
+
+
+        
+        public void RegisterMember(Member member)
+        {
+            bool memberExists = false;
+            for (int i = 0; i < Members.Count; i++)
+            {
+                if (Members[i].MemberID == member.MemberID)
+                {
+                    memberExists = true;
+                    break;
+                }
+            }
+            if (!memberExists)
+            {
+                Members.Add(member);
+            }
+            else
+            {
+                Console.WriteLine($"Member with ID {member.MemberID} already exists.");
+            }
+        }
+        public void RemoveMember(int memberID)
+        {
+            Member memberToRemove = null;
+            for (int i = 0; i < Members.Count; i++)
+            {
+                if (Members[i].MemberID == memberID)
+                {
+                    memberToRemove = Members[i];
+                    break;
+                }
+            }
+
+            if (memberToRemove != null)
+            {
+                Members.Remove(memberToRemove);
+
+            }
+            else
+            {
+                Console.WriteLine($"Member with ID {memberID} not found.");
+            }
+        }
+        public Member FindMemberByID(int memberID)
+        {
+            for (int i = 0; i < Members.Count; i++)
+            {
+                if (Members[i].MemberID == memberID)
+                {
+                    return Members[i];
+                }
+            }
+            Console.WriteLine("Member not found");
+            return null;
+        }
+
         public void BorrowBook(int memberID, string isbn)
         {
             Member member = FindMemberByID(memberID);
@@ -125,7 +187,7 @@ namespace LIBDG
                                                 !Transactions[i].IsReturned)
                 {
                     transactiontoReturn = Transactions[i];
-                    break; 
+                    break;
                 }
 
             }
@@ -138,11 +200,11 @@ namespace LIBDG
             else
             {
                 Console.WriteLine($"No matching transaction found for Member ID {memberID} and ISBN {isbn}.");
-            } 
+            }
 
 
         }
-      
+
 
         public void SerializeData(string FilePath)
         {
@@ -150,7 +212,7 @@ namespace LIBDG
             {
                 string jsonData = JsonSerializer.Serialize(this);
 
-                File.WriteAllText(FilePath, jsonData);            
+                File.WriteAllText(FilePath, jsonData);
 
             }
             catch (Exception ex)
