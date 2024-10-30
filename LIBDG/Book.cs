@@ -36,7 +36,7 @@ namespace LIBDG
             try
             {
                 string jsonData = JsonSerializer.Serialize(this);
-                File.WriteAllText(FilePath, jsonData);  // Ghi dữ liệu JSON ra file
+                File.WriteAllText(FilePath, jsonData);
                 Console.WriteLine($"Book data serialized to {FilePath}");
             }
             catch (Exception ex)

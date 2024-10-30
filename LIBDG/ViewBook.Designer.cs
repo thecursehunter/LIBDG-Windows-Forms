@@ -66,9 +66,10 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(109)))), ((int)(((byte)(140)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(6, 2);
+            this.panel1.Location = new System.Drawing.Point(8, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1001, 96);
+            this.panel1.Size = new System.Drawing.Size(1335, 118);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -77,18 +78,20 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(470, 34);
+            this.label1.Location = new System.Drawing.Point(627, 42);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 28);
+            this.label1.Size = new System.Drawing.Size(159, 36);
             this.label1.TabIndex = 2;
             this.label1.Text = "View Book";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(374, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(499, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(120, 111);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -96,9 +99,10 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(377, 104);
+            this.textBox1.Location = new System.Drawing.Point(503, 128);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(228, 23);
+            this.textBox1.Size = new System.Drawing.Size(303, 27);
             this.textBox1.TabIndex = 9;
             // 
             // label2
@@ -106,9 +110,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(271, 105);
+            this.label2.Location = new System.Drawing.Point(361, 129);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 22);
+            this.label2.Size = new System.Drawing.Size(129, 28);
             this.label2.TabIndex = 7;
             this.label2.Text = "Book Name";
             // 
@@ -117,12 +122,14 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(611, 104);
+            this.button1.Location = new System.Drawing.Point(815, 128);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(71, 23);
+            this.button1.Size = new System.Drawing.Size(95, 28);
             this.button1.TabIndex = 13;
             this.button1.Text = "Refresh";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridViewBooks
             // 
@@ -143,9 +150,11 @@
             // 
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(229)))), ((int)(((byte)(232)))));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 544);
+            this.dataGridView2.Location = new System.Drawing.Point(8, 670);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1001, 268);
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.Size = new System.Drawing.Size(1335, 330);
             this.dataGridView2.TabIndex = 15;
             // 
             // button2
@@ -154,14 +163,17 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(723, 751);
+            this.button2.Location = new System.Drawing.Point(964, 924);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(71, 23);
+            this.button2.Size = new System.Drawing.Size(95, 28);
             this.button2.TabIndex = 29;
             this.button2.Text = "Delete";
             this.button2.UseVisualStyleBackColor = false;
             // 
+
             // UpdateButton
+  
             // 
             this.UpdateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(229)))), ((int)(((byte)(232)))));
             this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -174,7 +186,9 @@
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = false;
             // 
+
             // txtBookQuantity
+
             // 
             this.txtBookQuantity.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBookQuantity.Location = new System.Drawing.Point(723, 710);
@@ -182,7 +196,9 @@
             this.txtBookQuantity.Size = new System.Drawing.Size(228, 23);
             this.txtBookQuantity.TabIndex = 27;
             // 
+
             // txtISBN
+
             // 
             this.txtISBN.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtISBN.Location = new System.Drawing.Point(723, 654);
@@ -190,7 +206,9 @@
             this.txtISBN.Size = new System.Drawing.Size(228, 23);
             this.txtISBN.TabIndex = 26;
             // 
+
             // txtPublishedYear
+
             // 
             this.txtPublishedYear.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPublishedYear.Location = new System.Drawing.Point(231, 707);
@@ -198,7 +216,9 @@
             this.txtPublishedYear.Size = new System.Drawing.Size(228, 23);
             this.txtPublishedYear.TabIndex = 24;
             // 
+
             // txtAuthor
+
             // 
             this.txtAuthor.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAuthor.Location = new System.Drawing.Point(231, 651);
@@ -206,6 +226,7 @@
             this.txtAuthor.Size = new System.Drawing.Size(228, 23);
             this.txtAuthor.TabIndex = 23;
             // 
+
             // txtTitle
             // 
             this.txtTitle.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -213,6 +234,7 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(228, 23);
             this.txtTitle.TabIndex = 22;
+
             // 
             // label7
             // 
@@ -220,11 +242,14 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(229)))), ((int)(((byte)(232)))));
             this.label7.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(55, 708);
+            this.label7.Location = new System.Drawing.Point(73, 871);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
+
             this.label7.Size = new System.Drawing.Size(150, 22);
             this.label7.TabIndex = 21;
             this.label7.Text = "Published Year";
+
             // 
             // label5
             // 
@@ -232,9 +257,12 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(229)))), ((int)(((byte)(232)))));
             this.label5.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(517, 652);
+            this.label5.Location = new System.Drawing.Point(689, 802);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
+
             this.label5.Size = new System.Drawing.Size(50, 22);
+
             this.label5.TabIndex = 19;
             this.label5.Text = "ISBN";
             // 
@@ -244,9 +272,10 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(229)))), ((int)(((byte)(232)))));
             this.label4.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(517, 708);
+            this.label4.Location = new System.Drawing.Point(689, 871);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(140, 22);
+            this.label4.Size = new System.Drawing.Size(181, 28);
             this.label4.TabIndex = 18;
             this.label4.Text = "Book Quantity";
             // 
@@ -256,9 +285,12 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(229)))), ((int)(((byte)(232)))));
             this.label3.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(55, 652);
+            this.label3.Location = new System.Drawing.Point(73, 802);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
+
             this.label3.Size = new System.Drawing.Size(70, 22);
+
             this.label3.TabIndex = 17;
             this.label3.Text = "Author";
             // 
@@ -268,7 +300,8 @@
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(229)))), ((int)(((byte)(232)))));
             this.label8.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(55, 601);
+            this.label8.Location = new System.Drawing.Point(73, 740);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 22);
             this.label8.TabIndex = 16;
@@ -280,9 +313,10 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button4.Location = new System.Drawing.Point(814, 751);
+            this.button4.Location = new System.Drawing.Point(1085, 924);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(71, 23);
+            this.button4.Size = new System.Drawing.Size(95, 28);
             this.button4.TabIndex = 30;
             this.button4.Text = "Cancel";
             this.button4.UseVisualStyleBackColor = false;
@@ -319,11 +353,11 @@
             // 
             // ViewBook
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(216)))), ((int)(((byte)(177)))));
-            this.ClientSize = new System.Drawing.Size(1012, 541);
+            this.ClientSize = new System.Drawing.Size(1349, 666);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.UpdateButton);
