@@ -22,23 +22,6 @@ namespace LIBDG
             this.Close();
         }
 
-        private void txtUsername_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (txtUsername.Text == "Username")
-            {
-                txtUsername.Clear();
-            }
-        }
-            
-        private void txtPassword_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (txtPassword.Text == "Password")
-            {
-                txtPassword.Clear();
-                txtPassword.PasswordChar = '*';
-            }
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.Hide();
