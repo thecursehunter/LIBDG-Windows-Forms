@@ -42,7 +42,7 @@ namespace LIBDG
             fileHandler.SaveBooksData(Library.Instance, booksFilePath);
             MessageBox.Show("Books saved successfully!");
 
-            //MessageBox.Show("Sach nay da duoc them vao thu vien thanh cong", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
 
             textBox1.Clear();
             textBox2.Clear();

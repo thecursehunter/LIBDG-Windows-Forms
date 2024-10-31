@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using System.IO;
 using System.Text.Json;
 using System.Windows.Forms;
+
 
 
 namespace LIBDG
@@ -52,16 +54,16 @@ namespace LIBDG
 
             if (bookExists)
             {
-                MessageBox.Show("Sach nay da ton tai trong thu vien");
+                MessageBox.Show("This book has already existed in library");
             }
             else
             {
                 Books.Add(newBook);
-                MessageBox.Show("Sach nay da duoc them vao thu vien");
+                MessageBox.Show("This book has added to library");
             }
         }
 
-        public void RemoveBook(string isbn)
+        public void RemoveBook(string isbn, string FilePath)
         {
             Book removeBook = null;
             foreach (Book book in Books)
@@ -76,72 +78,104 @@ namespace LIBDG
             if (removeBook != null)
             {
                 Books.Remove(removeBook);
-                MessageBox.Show($"Sach {removeBook.Title} da duoc xoa khoi thu vien");
+                MessageBox.Show($"Book {removeBook.Title} has already removed from library");
+
+                SerializeData(FilePath);
             }
             else
             {
-                MessageBox.Show("Khong tim thay sach nay trong thu vien");
+                MessageBox.Show("Cannot find this book in library");
             }
 
         }
-        public Book FindBookByISBN(string isbn)
+
+        public void UpdateBook(Book updatedBook, string FilePath)
         {
-            for (int i = 0; i < Books.Count; i++)
+            bool bookFound = false;
+            foreach (Book book in Books)
             {
-                if (Books[i].ISBN == isbn)
+                if (book.ISBN == updatedBook.ISBN)
                 {
-                    Console.WriteLine($"Found book: {Books[i].Title}");
-                    return Books[i];
+                    book.Title = updatedBook.Title;
+                    book.Author = updatedBook.Author;
+                    book.PublishedYear = updatedBook.PublishedYear;
+                    book.AvailableCopies = updatedBook.AvailableCopies;
+                    MessageBox.Show("This book has been updated");
+
+                    SerializeData(FilePath);
+                    bookFound = true;
+                    break;
                 }
             }
-            Console.WriteLine("Book not found.");
-            return null;
+            if(!bookFound)
+            {
+                MessageBox.Show("Cannot find this book to update");
+            }
         }
+        
+            public Book FindBookByISBN(string isbn)
+            {
+                for (int i = 0; i < Books.Count; i++)
+                {
+                    if (Books[i].ISBN == isbn)
+                    {
+                        Console.WriteLine($"Found book: {Books[i].Title}");
+                        return Books[i];
+                    }
+                }
+                Console.WriteLine("Book not found.");
+                return null;
+            }
 
 
 
 
         
-        public void RegisterMember(Member member)
+        public void RegisterMember(Member newMember)
         {
             bool memberExists = false;
-            for (int i = 0; i < Members.Count; i++)
+            foreach (Member member in Members)
             {
-                if (Members[i].MemberID == member.MemberID)
-                {
+                if (member.MemberID == newMember.MemberID)
+                { 
                     memberExists = true;
                     break;
                 }
+
+                if (memberExists) 
+                {
+                    MessageBox.Show("This student has already existed in library");
+                }
+
+                else
+                {
+                    Members.Add(newMember);
+                    MessageBox.Show("Added this student to library");
+                }
             }
-            if (!memberExists)
-            {
-                Members.Add(member);
-            }
-            else
-            {
-                Console.WriteLine($"Member with ID {member.MemberID} already exists.");
-            }
+
         }
         public void RemoveMember(int memberID)
         {
             Member memberToRemove = null;
-            for (int i = 0; i < Members.Count; i++)
+            foreach (Member member in Members)
             {
-                if (Members[i].MemberID == memberID)
+                if (member.MemberID == memberID)
                 {
-                    memberToRemove = Members[i];
+                    memberToRemove = member;
                     break;
                 }
-            }
 
-            if (memberToRemove != null)
-            {
-                Members.Remove(memberToRemove);
+                if (memberToRemove != null)
+                {
+                    Members.Remove(memberToRemove);
+                    MessageBox.Show("Removed student from library");
+                }
 
-            }
-            else
-            {
-                Console.WriteLine($"Member with ID {memberID} not found.");
+                else
+                {
+                    MessageBox.Show("Cannot find this student in library");
+                }
             }
         }
         public Member FindMemberByID(int memberID)
@@ -381,7 +415,6 @@ namespace LIBDG
                 MessageBox.Show($"Error deserializing transactions data: {ex.Message}");
             }
         }
-
 
     }
 
