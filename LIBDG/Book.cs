@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace LIBDG
 {
@@ -88,11 +89,41 @@ namespace LIBDG
             AvailableCopies++;
             Console.WriteLine($"{Title} has been returned. Copies now: {AvailableCopies}");
         }
+        //Lưu riêng danh sách books ra file json 
+        public void SerializeBooksData(string filePath)
+        {
+            try
+            {
+                string jsonData = JsonSerializer.Serialize(this);
+                File.WriteAllText(filePath, jsonData);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("$\"Error serializing books data: {ex.Message}\"");
+            }
+        }
+        //tải riêng danh sách books 
+        public void DeserializeBooksData(string FilePath)
+        {
+            string jsonData = File.ReadAllText(FilePath);
+            Book deserializeBook = JsonSerializer.Deserialize<Book>(jsonData);
 
-        
+            if (deserializeBook != null)
+            {
+                this.Title = deserializeBook.Title; 
+                this.Author = deserializeBook.Author;
+                this.ISBN = deserializeBook.ISBN; 
+                this.PublishedYear = deserializeBook.PublishedYear; 
+                this.AvailableCopies = deserializeBook.AvailableCopies; 
+            }
 
-        
 
-        
+
+        }
+
+
+
+
+
     }
 }

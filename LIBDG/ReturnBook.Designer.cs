@@ -70,7 +70,11 @@
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Location = new System.Drawing.Point(12, 114);
             this.panel3.Name = "panel3";
+
+            this.panel3.Size = new System.Drawing.Size(553, 2198);
+
             this.panel3.Size = new System.Drawing.Size(415, 1616);
+
             this.panel3.TabIndex = 10;
             // 
             // button3
@@ -143,7 +147,10 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+
+
             this.label1.Location = new System.Drawing.Point(654, 35);
+
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 28);
             this.label1.TabIndex = 1;
@@ -168,7 +175,9 @@
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Location = new System.Drawing.Point(12, 5);
             this.panel2.Name = "panel2";
+
             this.panel2.Size = new System.Drawing.Size(1256, 103);
+
             this.panel2.TabIndex = 11;
             // 
             // dataGridView1
@@ -180,7 +189,9 @@
             this.dataGridView1.Location = new System.Drawing.Point(433, 114);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
+
             this.dataGridView1.Size = new System.Drawing.Size(834, 415);
+
             this.dataGridView1.TabIndex = 12;
             // 
             // panel1
@@ -198,7 +209,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(433, 535);
             this.panel1.Name = "panel1";
+
             this.panel1.Size = new System.Drawing.Size(834, 176);
+
             this.panel1.TabIndex = 13;
             // 
             // button1
