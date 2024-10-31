@@ -63,7 +63,7 @@ namespace LIBDG
             }
         }
 
-        public void RemoveBook(string isbn)
+        public void RemoveBook(string isbn, string FilePath)
         {
             Book removeBook = null;
             foreach (Book book in Books)
@@ -79,6 +79,8 @@ namespace LIBDG
             {
                 Books.Remove(removeBook);
                 MessageBox.Show($"Book {removeBook.Title} has already removed from library");
+
+                SerializeData(FilePath);
             }
             else
             {
