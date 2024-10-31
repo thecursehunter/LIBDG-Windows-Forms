@@ -41,7 +41,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.retrunButton = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -70,7 +70,7 @@
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Location = new System.Drawing.Point(12, 114);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(415, 1616);
+            this.panel3.Size = new System.Drawing.Size(415, 1956);
             this.panel3.TabIndex = 10;
             // 
             // button3
@@ -143,7 +143,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(654, 35);
+            this.label1.Location = new System.Drawing.Point(654, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 28);
             this.label1.TabIndex = 1;
@@ -168,7 +168,7 @@
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Location = new System.Drawing.Point(12, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1256, 103);
+            this.panel2.Size = new System.Drawing.Size(1222, 103);
             this.panel2.TabIndex = 11;
             // 
             // dataGridView1
@@ -180,7 +180,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(433, 114);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(834, 415);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 415);
             this.dataGridView1.TabIndex = 12;
             // 
             // panel1
@@ -188,7 +188,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.retrunButton);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.textBox2);
@@ -198,20 +198,21 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(433, 535);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 176);
+            this.panel1.Size = new System.Drawing.Size(800, 176);
             this.panel1.TabIndex = 13;
             // 
-            // button1
+            // retrunButton
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(659, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 39);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Return";
-            this.button1.UseVisualStyleBackColor = true;
+            this.retrunButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.retrunButton.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.retrunButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.retrunButton.Location = new System.Drawing.Point(659, 33);
+            this.retrunButton.Name = "retrunButton";
+            this.retrunButton.Size = new System.Drawing.Size(85, 39);
+            this.retrunButton.TabIndex = 20;
+            this.retrunButton.Text = "Return";
+            this.retrunButton.UseVisualStyleBackColor = true;
+            this.retrunButton.Click += new System.EventHandler(this.retrunButton_Click);
             // 
             // button5
             // 
@@ -328,7 +329,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button retrunButton;
         private System.Windows.Forms.Button button5;
     }
 }

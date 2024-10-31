@@ -6,11 +6,10 @@ namespace LIBDG
 {
     public partial class ViewBook : Form
     {
-        private Library library; 
+        private Library library;
         public ViewBook()
         {
             InitializeComponent();
-            Library library = new Library(); 
         }
         private void DisplayBooksInDataGridView(List<Book> books)
         {
@@ -21,7 +20,7 @@ namespace LIBDG
             foreach (Book book in books)
             {
                 dataGridViewBooks.Rows.Add(book.Title, book.Author, book.ISBN, book.PublishedYear, book.AvailableCopies);
-            } 
+            }
 
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -31,11 +30,33 @@ namespace LIBDG
 
         private void btnSearch_Click_Click(object sender, EventArgs e)
         {
-            string searchTerm = txtSearch.Text;
-            string filePath = "book.json";
-            List<Book> foundBooks = Library.LoadBooksFromJsonAndFind(filePath, searchTerm);
 
-            DisplayBooksInDataGridView(foundBooks);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string title = txtTitle.Text;
+            string author = txtAuthor.Text;
+            string isbn = txtISBN.Text;
+            int publishedYear = int.Parse(txtPublishedYear.Text);
+            int quantity = int.Parse(txtBookQuantity.Text);
+
+            Book updatedBook = new Book(title, author, isbn, publishedYear, quantity);
+
+            Library.Instance.UpdateBook(updatedBook, "library.json");
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string isbn = txtISBN.Text;
+
+            if (string.IsNullOrEmpty(isbn))
+            {
+                MessageBox.Show("Please enter ISBN to delete book", "Noti", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            //Library.Instance.RemoveBook(isbn, "library.json");
         }
     }
 }
