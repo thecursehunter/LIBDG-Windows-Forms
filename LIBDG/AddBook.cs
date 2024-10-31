@@ -33,11 +33,14 @@ namespace LIBDG
                 MessageBox.Show("Vui long kiem tra lai thong tin");
                 return;
             }
-            
-            Book newbook = new Book(title, author, isbn, publishYear, quantity);
-            
-            Library.Instance.AddBook(newbook);
-            Library.Instance.SerializeData("library.json");
+            Book newBook = new Book(title, author, isbn, publishYear, quantity);
+
+            Library.Instance.AddBook(newBook);
+
+            FileHandler fileHandler = new FileHandler();
+            string booksFilePath = "books.json";
+            fileHandler.SaveBooksData(Library.Instance, booksFilePath);
+            MessageBox.Show("Books saved successfully!");
 
             //MessageBox.Show("Sach nay da duoc them vao thu vien thanh cong", "Thong bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
