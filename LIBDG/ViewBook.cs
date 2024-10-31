@@ -44,7 +44,6 @@ namespace LIBDG
             Book updatedBook = new Book(title, author, isbn, publishedYear, quantity);
 
             Library.Instance.UpdateBook(updatedBook, "library.json");
-
         }
 
         private void button2_Click(object sender, EventArgs e)
