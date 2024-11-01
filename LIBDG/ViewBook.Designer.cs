@@ -155,9 +155,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-
             this.button2.Location = new System.Drawing.Point(1049, 914);
-
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 28);
@@ -172,9 +170,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-
             this.button3.Location = new System.Drawing.Point(929, 914);
-
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(95, 28);
@@ -183,9 +179,7 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-
             // txtBookQuantity
-
             // 
             this.txtBookQuantity.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBookQuantity.Location = new System.Drawing.Point(961, 815);
@@ -194,9 +188,7 @@
             this.txtBookQuantity.Size = new System.Drawing.Size(303, 27);
             this.txtBookQuantity.TabIndex = 27;
             // 
-
             // txtISBN
-
             // 
             this.txtISBN.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtISBN.Location = new System.Drawing.Point(961, 746);
@@ -205,9 +197,7 @@
             this.txtISBN.Size = new System.Drawing.Size(303, 27);
             this.txtISBN.TabIndex = 26;
             // 
-
             // txtPublishedYear
-
             // 
             this.txtPublishedYear.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPublishedYear.Location = new System.Drawing.Point(308, 870);
@@ -216,9 +206,7 @@
             this.txtPublishedYear.Size = new System.Drawing.Size(303, 27);
             this.txtPublishedYear.TabIndex = 24;
             // 
-
             // txtAuthor
-
             // 
             this.txtAuthor.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAuthor.Location = new System.Drawing.Point(308, 801);
@@ -227,7 +215,6 @@
             this.txtAuthor.Size = new System.Drawing.Size(303, 27);
             this.txtAuthor.TabIndex = 23;
             // 
-
             // txtTitle
             // 
             this.txtTitle.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -236,7 +223,6 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(303, 27);
             this.txtTitle.TabIndex = 22;
-
             // 
             // label7
             // 
@@ -247,11 +233,9 @@
             this.label7.Location = new System.Drawing.Point(73, 871);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-
             this.label7.Size = new System.Drawing.Size(194, 28);
             this.label7.TabIndex = 21;
             this.label7.Text = "Published Year";
-
             // 
             // label5
             // 
@@ -259,12 +243,10 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(229)))), ((int)(((byte)(232)))));
             this.label5.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-
             this.label5.Location = new System.Drawing.Point(687, 743);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 28);
-
             this.label5.TabIndex = 19;
             this.label5.Text = "ISBN";
             // 
@@ -274,9 +256,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(229)))), ((int)(((byte)(232)))));
             this.label4.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-
             this.label4.Location = new System.Drawing.Point(687, 812);
-
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(181, 28);
@@ -292,9 +272,7 @@
             this.label3.Location = new System.Drawing.Point(73, 802);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-
             this.label3.Size = new System.Drawing.Size(90, 28);
-
             this.label3.TabIndex = 17;
             this.label3.Text = "Author";
             // 
@@ -307,9 +285,7 @@
             this.label8.Location = new System.Drawing.Point(73, 740);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-
             this.label8.Size = new System.Drawing.Size(77, 28);
-
             this.label8.TabIndex = 16;
             this.label8.Text = "Title";
             // 
@@ -319,9 +295,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-
             this.button4.Location = new System.Drawing.Point(1171, 914);
-
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(95, 28);

@@ -63,7 +63,7 @@ namespace LIBDG
             }
         }
 
-        public void RemoveBook(string isbn, string FilePath)
+        public void RemoveBook(string isbn)
         {
             Book removeBook = null;
             foreach (Book book in Books)
@@ -78,18 +78,15 @@ namespace LIBDG
             if (removeBook != null)
             {
                 Books.Remove(removeBook);
-                MessageBox.Show($"Book {removeBook.Title} has already removed from library");
-
-                SerializeData(FilePath);
+                MessageBox.Show($"Book '{removeBook.Title}' has been removed from the library.");
             }
             else
             {
-                MessageBox.Show("Cannot find this book in library");
+                MessageBox.Show("Cannot find this book in the library.");
             }
-
         }
 
-        public void UpdateBook(Book updatedBook, string FilePath)
+        public void UpdateBook(Book updatedBook)
         {
             bool bookFound = false;
             foreach (Book book in Books)
@@ -101,19 +98,18 @@ namespace LIBDG
                     book.PublishedYear = updatedBook.PublishedYear;
                     book.AvailableCopies = updatedBook.AvailableCopies;
                     MessageBox.Show("This book has been updated");
-
-                    SerializeData(FilePath);
                     bookFound = true;
                     break;
                 }
             }
-            if(!bookFound)
+            if (!bookFound)
             {
                 MessageBox.Show("Cannot find this book to update");
             }
         }
-        
-            public Book FindBookByISBN(string isbn)
+
+
+        public Book FindBookByISBN(string isbn)
             {
                 for (int i = 0; i < Books.Count; i++)
                 {
