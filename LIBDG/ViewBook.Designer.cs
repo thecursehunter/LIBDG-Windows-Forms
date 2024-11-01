@@ -136,7 +136,7 @@
             this.dataGridViewBooks.RowHeadersWidth = 51;
             this.dataGridViewBooks.Size = new System.Drawing.Size(1335, 498);
             this.dataGridViewBooks.TabIndex = 14;
-            this.dataGridViewBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            
             // 
             // dataGridView2
             // 

@@ -10,7 +10,7 @@ namespace LIBDG
         public ViewBook()
         {
             InitializeComponent();
-                    }
+        }
         private void DisplayBooksInDataGridView(List<Book> books)
         {
             // Xóa các dòng hiện có trong DataGridView
@@ -33,31 +33,29 @@ namespace LIBDG
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
+      
 
 
 
 
         private void button3_Click(object sender, EventArgs e)
-        {            
+        {
             string title = txtTitle.Text;
             string author = txtAuthor.Text;
             string isbn = txtISBN.Text;
             int publishedYear = int.Parse(txtPublishedYear.Text);
             int quantity = int.Parse(txtBookQuantity.Text);
-            
+
             Book updatedBook = new Book(title, author, isbn, publishedYear, quantity);
-          
+
             Library.Instance.UpdateBook(updatedBook);
-   
+
             Library.Instance.SerializeBooksData("books.json");
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {          
+        {
             string isbn = txtISBN.Text;
 
             if (string.IsNullOrEmpty(isbn))
@@ -65,9 +63,9 @@ namespace LIBDG
                 MessageBox.Show("Please enter ISBN to delete the book", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
             Library.Instance.RemoveBook(isbn);
-            
+
             Library.Instance.SerializeBooksData("books.json");
         }
 
@@ -76,7 +74,12 @@ namespace LIBDG
             string searchTerm = txtSearch.Text;
             string filePath = "books.json";
             List<Book> foundBooks = Library.Instance.LoadBooksFromJsonAndFind(filePath, searchTerm);
-
+            if(foundBooks.Count == 0)
+            {
+                MessageBox.Show("No book found with the provided information.");
+                return;
+            } 
+                
             DisplayBooksInDataGridView(foundBooks);
         }
 

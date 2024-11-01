@@ -26,11 +26,11 @@ namespace LIBDG
             int quantity = int.Parse(textBox5.Text);
 
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(author) ||
-                string.IsNullOrWhiteSpace(isbn) || !int.TryParse(textBox3.Text, out publishYear) || 
+                string.IsNullOrWhiteSpace(isbn) || !int.TryParse(textBox3.Text, out publishYear) ||
                 !int.TryParse(textBox5.Text, out quantity)
                 )
             {
-                MessageBox.Show("Vui long kiem tra lai thong tin");
+                MessageBox.Show("Please check book info again.");
                 return;
             }
             Book newBook = new Book(title, author, isbn, publishYear, quantity);
@@ -39,10 +39,10 @@ namespace LIBDG
 
             FileHandler fileHandler = new FileHandler();
             string booksFilePath = "books.json";
-            fileHandler.SaveBooksData(Library.Instance, booksFilePath);
+            fileHandler.SaveBooksData("books.json");
             MessageBox.Show("Books saved successfully!");
 
-            
+
 
             textBox1.Clear();
             textBox2.Clear();

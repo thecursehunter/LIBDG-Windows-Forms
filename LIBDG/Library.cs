@@ -126,31 +126,32 @@ namespace LIBDG
 
 
 
-        
+
         public void RegisterMember(Member newMember)
         {
             bool memberExists = false;
+
             foreach (Member member in Members)
             {
                 if (member.MemberID == newMember.MemberID)
-                { 
+                {
                     memberExists = true;
                     break;
                 }
-
-                if (memberExists) 
-                {
-                    MessageBox.Show("This student has already existed in library");
-                }
-
-                else
-                {
-                    Members.Add(newMember);
-                    MessageBox.Show("Added this student to library");
-                }
             }
 
+            if (memberExists)
+            {
+                MessageBox.Show("This student has already existed in library");
+            }
+            else
+            {
+                
+                Members.Add(newMember);
+                MessageBox.Show("Added this student to library");
+            }
         }
+
         public void RemoveMember(int memberID)
         {
             Member memberToRemove = null;
@@ -376,8 +377,45 @@ namespace LIBDG
             {
                 MessageBox.Show($"Error deserializing members data: {ex.Message}");
             }
-        } 
-        
+        }
+        public List<Member> LoadMembersFromJsonAndFind(string filePath, string searchTerm)
+        {
+            List<Member> foundMembers = new List<Member>();
+
+          
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("File not found.");
+                return foundMembers; 
+            }
+
+            try
+            {
+                
+                string jsonData = File.ReadAllText(filePath);
+
+                
+                List<Member> loadedMembers = JsonSerializer.Deserialize<List<Member>>(jsonData);
+
+                foreach (Member member in loadedMembers)
+                {
+                    if (member.MemberID.ToString().Equals(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                        member.Name.Equals(searchTerm, StringComparison.OrdinalIgnoreCase))
+                    {
+                        foundMembers.Add(member);
+                    }
+                }
+
+                return foundMembers;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reading or parsing file: {ex.Message}");
+                return foundMembers;
+            }
+        }
+
+
         //lưu danh sách Transaction 
         public void SerializeTransactionsData(string filePath)
         {

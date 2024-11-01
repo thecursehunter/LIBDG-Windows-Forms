@@ -5,39 +5,39 @@
         public string FilePath { get; set; }
 
         // Lưu danh sách Books
-        public void SaveBooksData(Library library, string filePath)
+        public void SaveBooksData(string filePath)
         {
-            library.SerializeBooksData(filePath);
+            Library.Instance.SerializeBooksData(filePath);
         }
 
         // Tải danh sách Books
-        public void LoadBooksData(Library library, string filePath)
+        public void LoadBooksData(string filePath)
         {
-            library.DeserializeBooksData(filePath);
+            Library.Instance.DeserializeBooksData(filePath);
         }
 
         // Lưu danh sách Members
-        public void SaveMembersData(Library library, string filePath)
+        public void SaveMembersData(string filePath)
         {
-            library.SerializeMembersData(filePath);
+            Library.Instance.SerializeMembersData(filePath);
         }
 
         // Tải danh sách Members
-        public void LoadMembersData(Library library, string filePath)
+        public void LoadMembersData(string filePath)
         {
-            library.DeserializeMembersData(filePath);
+            Library.Instance.DeserializeMembersData(filePath);
         }
 
         // Lưu danh sách Transactions
-        public void SaveTransactionsData(Library library, string filePath)
+        public void SaveTransactionsData(string filePath)
         {
-            library.SerializeTransactionsData(filePath);
+            Library.Instance.SerializeTransactionsData(filePath);
         }
 
         // Tải danh sách Transactions
-        public void LoadTransactionsData(Library library, string filePath)
+        public void LoadTransactionsData(string filePath)
         {
-            library.DeserializeTransactionsData(filePath);
+            Library.Instance.DeserializeTransactionsData(filePath);
         }
     }
 }
