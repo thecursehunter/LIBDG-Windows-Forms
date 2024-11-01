@@ -28,7 +28,7 @@ namespace LIBDG
             }
         }
 
-        private Library()
+        public Library()
 
         {
             Books = new List<Book>();
@@ -239,7 +239,43 @@ namespace LIBDG
 
 
         }
+        public List<Book> LoadBooksFromJsonAndFind(string filePath, string title)
+        {
+            List<Book> foundBooks = new List<Book>(); 
 
+            
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("File not found.");
+                return foundBooks; // Trả về danh sách rỗng nếu không tìm thấy file
+            }
+
+            try
+            {
+                // Đọc dữ liệu JSON từ file
+                string jsonData = File.ReadAllText(filePath);
+
+                // Deserialize dữ liệu JSON thành danh sách sách
+                List<Book> loadedBooks = JsonSerializer.Deserialize<List<Book>>(jsonData);
+
+                // Duyệt qua danh sách sách và thêm sách vào danh sách kết quả nếu khớp Title hoặc ISBN
+                foreach (Book book in loadedBooks)
+                {
+                    if (book.Title.Equals(title, StringComparison.OrdinalIgnoreCase))
+                    {
+                        foundBooks.Add(book); 
+                    }
+                }
+
+                
+                return foundBooks;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reading or parsing file: {ex.Message}");
+                return foundBooks; 
+            }
+        }
 
         public void SerializeData(string FilePath)
         {
@@ -252,7 +288,7 @@ namespace LIBDG
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error serializing library: {ex.Message}");
+                MessageBox.Show($"Error serializing library: {ex.Message}");
             }
         }
 
@@ -268,13 +304,116 @@ namespace LIBDG
                     this.Books = deserializedLibrary.Books;
                     this.Members = deserializedLibrary.Members;
                     this.Transactions = deserializedLibrary.Transactions;
-                }
+                }   
 
-                Console.WriteLine($"Library data deserialized from {FilePath}");
+              
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error deserializing library: {ex.Message}");
+                MessageBox.Show($"Error deserializing library: {ex.Message}");
+            }
+        }
+        // lưu trữ riêng danh sách Books vào file JSON
+        public void SerializeBooksData(string filePath)
+        {
+            try
+            {
+                string jsonData = JsonSerializer.Serialize(Books); 
+                File.WriteAllText(filePath, jsonData);
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error serializing books data: {ex.Message}");
+            }
+        }
+
+        // load riêng danh sách Books từ file JSON
+        public void DeserializeBooksData(string filePath)
+        {
+            try
+            {
+                string jsonData = File.ReadAllText(filePath);
+                List<Book> deserializedBooks = JsonSerializer.Deserialize<List<Book>>(jsonData);
+
+                if (deserializedBooks != null)
+                {
+                    this.Books = deserializedBooks; // Gán danh sách Books sau khi deserialization
+                }
+
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deserializing books data: {ex.Message}");
+            }
+        }
+
+        // lưu danh sách Members 
+        public void SerializeMembersData(string filePath) 
+        {
+            try
+            {
+                string jsonData = JsonSerializer.Serialize(Members);
+                File.WriteAllText(filePath, jsonData);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error serializing members data: {ex.Message}");
+            }
+        }
+        // Tải danh sách Members
+        public void DeserializeMembersData(string filePath)
+        {
+            try
+            {
+                string jsonData = File.ReadAllText(filePath);
+                List<Member> deserializedMembers = JsonSerializer.Deserialize<List<Member>>(jsonData);
+
+                if (deserializedMembers != null)
+                {
+                    this.Members = deserializedMembers;
+                }
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deserializing members data: {ex.Message}");
+            }
+        } 
+        
+        //lưu danh sách Transaction 
+        public void SerializeTransactionsData(string filePath)
+        {
+            try
+            { 
+                string jsonData = JsonSerializer.Serialize(Transactions);
+                File.WriteAllText (filePath, jsonData); 
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error serializing transactions data: {ex.Message}");
+            }
+        }
+        //load danh sách transaction 
+        public void DeserializeTransactionsData(string filePath)
+        {
+            try
+            {
+                string jsonData = File.ReadAllText(filePath);
+                List<Transaction> deserializedTransactions = JsonSerializer.Deserialize<List<Transaction>>(jsonData);
+
+                if (deserializedTransactions != null)
+                {
+                    this.Transactions = deserializedTransactions;
+                }
+
+             
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deserializing transactions data: {ex.Message}");
             }
         }
 
