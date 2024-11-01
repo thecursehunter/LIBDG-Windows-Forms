@@ -229,6 +229,7 @@ namespace LIBDG
             if (transactiontoReturn != null)
             {
                 transactiontoReturn.CompleteReturn();
+                transactiontoReturn.Book.ReturnBook(); //Tăng số sách còn lại trong available copies
                 Console.WriteLine($"Transaction {transactiontoReturn.TransactionID} completed: {transactiontoReturn.Member.Name} returned {transactiontoReturn.Book.Title}.");
             }
             else
