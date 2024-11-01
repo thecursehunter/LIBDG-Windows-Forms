@@ -32,43 +32,7 @@ namespace LIBDG
 
         
 
-        public void SerializeData(string FilePath)
-        {
-            try
-            {
-                string jsonData = JsonSerializer.Serialize(this);
-                File.WriteAllText(FilePath, jsonData);
-                Console.WriteLine($"Book data serialized to {FilePath}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error serializing book: {ex.Message}");
-            }
-        }
-
-        public void DeserializeData(string FilePath)
-        {
-            try
-            {
-                string jsonData = File.ReadAllText(FilePath);
-                Book deserializedBook = JsonSerializer.Deserialize<Book>(jsonData);
-
-                if (deserializedBook != null)
-                {
-                    this.Title = deserializedBook.Title;
-                    this.Author = deserializedBook.Author;
-                    this.ISBN = deserializedBook.ISBN;
-                    this.PublishedYear = deserializedBook.PublishedYear;
-                    this.AvailableCopies = deserializedBook.AvailableCopies;
-                }
-
-                Console.WriteLine($"Book data deserialized from {FilePath}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error deserializing book: {ex.Message}");
-            }
-        }
+        
 
 
         public void BorrowBook()
@@ -90,7 +54,7 @@ namespace LIBDG
             Console.WriteLine($"{Title} has been returned. Copies now: {AvailableCopies}");
         }
         //Lưu riêng danh sách books ra file json 
-        public void SerializeBooksData(string filePath)
+        public void SerializeData(string filePath)
         {
             try
             {
@@ -103,7 +67,7 @@ namespace LIBDG
             }
         }
         //tải riêng danh sách books 
-        public void DeserializeBooksData(string FilePath)
+        public void DeserializeData(string FilePath)
         {
             string jsonData = File.ReadAllText(FilePath);
             Book deserializeBook = JsonSerializer.Deserialize<Book>(jsonData);
