@@ -41,7 +41,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
             this.MemberID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,7 +78,7 @@
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Location = new System.Drawing.Point(12, 114);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(415, 2466);
+            this.panel3.Size = new System.Drawing.Size(415, 2806);
             this.panel3.TabIndex = 10;
             // 
             // btnRefresh
@@ -152,7 +152,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(645, 41);
+            this.label1.Location = new System.Drawing.Point(717, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 28);
             this.label1.TabIndex = 1;
@@ -161,7 +161,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(555, 7);
+            this.pictureBox2.Location = new System.Drawing.Point(626, 7);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(93, 93);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -177,7 +177,7 @@
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Location = new System.Drawing.Point(12, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1171, 103);
+            this.panel2.Size = new System.Drawing.Size(1280, 103);
             this.panel2.TabIndex = 11;
             // 
             // dataGridViewStudents
@@ -188,7 +188,7 @@
             this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MemberID,
-            this.Name,
+            this.StudentName,
             this.Email,
             this.Title,
             this.ISBN,
@@ -198,7 +198,7 @@
             this.dataGridViewStudents.Location = new System.Drawing.Point(433, 114);
             this.dataGridViewStudents.Name = "dataGridViewStudents";
             this.dataGridViewStudents.RowHeadersWidth = 51;
-            this.dataGridViewStudents.Size = new System.Drawing.Size(749, 415);
+            this.dataGridViewStudents.Size = new System.Drawing.Size(859, 415);
             this.dataGridViewStudents.TabIndex = 12;
             // 
             // MemberID
@@ -206,10 +206,10 @@
             this.MemberID.HeaderText = "Member ID";
             this.MemberID.Name = "MemberID";
             // 
-            // Name
+            // StudentName
             // 
-            this.Name.HeaderText = "Student Name";
-            this.Name.Name = "Name";
+            this.StudentName.HeaderText = "Student Name";
+            this.StudentName.Name = "StudentName";
             // 
             // Email
             // 
@@ -256,7 +256,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(433, 535);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(749, 176);
+            this.panel1.Size = new System.Drawing.Size(859, 176);
             this.panel1.TabIndex = 13;
             // 
             // btnReturn
@@ -390,7 +390,7 @@
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn MemberID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StudentName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
