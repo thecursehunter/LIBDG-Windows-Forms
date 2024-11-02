@@ -102,6 +102,7 @@ namespace LIBDG
                     break;
                 }
             }
+            
             if (!bookFound)
             {
                 MessageBox.Show("Cannot find this book to update");
@@ -161,18 +162,39 @@ namespace LIBDG
                 {
                     memberToRemove = member;
                     break;
-                }
+                }               
+            }
+            
+            if (memberToRemove != null)
+            {
+                Members.Remove(memberToRemove);
+                MessageBox.Show("Removed student from library");
+            }
 
-                if (memberToRemove != null)
-                {
-                    Members.Remove(memberToRemove);
-                    MessageBox.Show("Removed student from library");
-                }
+            else
+            {
+                MessageBox.Show("Cannot find this student in library");
+            }
+        }
 
-                else
+        public void UpdateMemberInfo(Member updatedMember)
+        {
+            bool memberFound = false;
+            foreach (Member member in Members)
+            {
+                if (member.MemberID == updatedMember.MemberID)
                 {
-                    MessageBox.Show("Cannot find this student in library");
+                    member.Name = updatedMember.Name;
+                    member.Email = updatedMember.Email;
+                    MessageBox.Show("Member information has been updated");
+                    memberFound = true;
+                    break;
                 }
+            }
+
+            if (!memberFound)
+            {
+                MessageBox.Show("Cannot find this member to update");
             }
         }
         public Member FindMemberByID(int memberID)
