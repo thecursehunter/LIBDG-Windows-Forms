@@ -68,6 +68,28 @@ namespace LIBDG
         {
             this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int memberID = int.Parse(txtStudentID.Text);
+            string name = txtStudentName.Text;
+            string email = txtStudentEmail.Text;
+
+            Member updatedMember = new Member(memberID, name, email);
+
+            Library.Instance.UpdateMemberInfo(updatedMember);
+
+            Library.Instance.SerializeMembersData("members.json");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int memberID = int.Parse(txtStudentID.Text);
+
+            Library.Instance.RemoveMember(memberID);
+
+            Library.Instance.SerializeMembersData("members.json");
+        }
     }
 }
 
