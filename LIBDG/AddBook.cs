@@ -39,7 +39,7 @@ namespace LIBDG
 
             FileHandler fileHandler = new FileHandler();
             string booksFilePath = "books.json";
-            fileHandler.SaveBooksData("books.json");
+            fileHandler.SaveBooksData(booksFilePath);
             MessageBox.Show("Books saved successfully!");
 
 

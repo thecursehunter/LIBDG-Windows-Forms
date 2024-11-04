@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -31,9 +32,9 @@ namespace LIBDG
         public Library()
 
         {
-            Books = new List<Book>();
-            Members = new List<Member>();
-            Transactions = new List<Transaction>();
+            this.Books = DeserializeBooksData("books.json");
+            this.Members = DeserializeMembersData("members.json");
+            this.Transactions = DeserializeTransactionsData("transactions.json");
         }
 
 
@@ -97,12 +98,12 @@ namespace LIBDG
                     book.Author = updatedBook.Author;
                     book.PublishedYear = updatedBook.PublishedYear;
                     book.AvailableCopies = updatedBook.AvailableCopies;
-                    MessageBox.Show("This book has been updated");
+
                     bookFound = true;
                     break;
                 }
             }
-            
+
             if (!bookFound)
             {
                 MessageBox.Show("Cannot find this book to update");
@@ -111,22 +112,33 @@ namespace LIBDG
 
 
         public Book FindBookByISBN(string isbn)
+        {
+            for (int i = 0; i < Books.Count; i++)
             {
-                for (int i = 0; i < Books.Count; i++)
+                if (Books[i].ISBN == isbn)
                 {
-                    if (Books[i].ISBN == isbn)
-                    {
-                        Console.WriteLine($"Found book: {Books[i].Title}");
-                        return Books[i];
-                    }
+                    Console.WriteLine($"Found book: {Books[i].Title}");
+                    return Books[i];
                 }
-                Console.WriteLine("Book not found.");
-                return null;
+            }
+            Console.WriteLine("Book not found.");
+            return null;
+        }
+        public Book FindBookByTitle(string title)
+        {
+
+            foreach (Book book in Books)
+            {
+
+                if (book.Title.Equals(title, StringComparison.OrdinalIgnoreCase))
+                {
+                    return book;
+                }
             }
 
 
-
-
+            return null;
+        }
 
         public void RegisterMember(Member newMember)
         {
@@ -147,7 +159,7 @@ namespace LIBDG
             }
             else
             {
-                
+
                 Members.Add(newMember);
                 MessageBox.Show("Added this student to library");
             }
@@ -162,9 +174,9 @@ namespace LIBDG
                 {
                     memberToRemove = member;
                     break;
-                }               
+                }
             }
-            
+
             if (memberToRemove != null)
             {
                 Members.Remove(memberToRemove);
@@ -186,7 +198,7 @@ namespace LIBDG
                 {
                     member.Name = updatedMember.Name;
                     member.Email = updatedMember.Email;
-                    MessageBox.Show("Member information has been updated");
+
                     memberFound = true;
                     break;
                 }
@@ -259,9 +271,9 @@ namespace LIBDG
         }
         public List<Book> LoadBooksFromJsonAndFind(string filePath, string title)
         {
-            List<Book> foundBooks = new List<Book>(); 
+            List<Book> foundBooks = new List<Book>();
 
-            
+
             if (!File.Exists(filePath))
             {
                 MessageBox.Show("File not found.");
@@ -281,19 +293,54 @@ namespace LIBDG
                 {
                     if (book.Title.Equals(title, StringComparison.OrdinalIgnoreCase))
                     {
-                        foundBooks.Add(book); 
+                        foundBooks.Add(book);
                     }
                 }
 
-                
+
                 return foundBooks;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error reading or parsing file: {ex.Message}");
-                return foundBooks; 
+                return foundBooks;
             }
         }
+        public List<Book> LoadBooksFromFile(string filePath)
+        {
+            List<Book> books = new List<Book>();
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show($"File '{filePath}' not found.");
+                return books;
+            }
+
+            try
+            {
+                string jsonData = File.ReadAllText(filePath);
+
+                if (string.IsNullOrWhiteSpace(jsonData))
+                {
+                    MessageBox.Show("Books file is empty.");
+                    return books;
+                }
+
+                books = JsonSerializer.Deserialize<List<Book>>(jsonData) ?? new List<Book>();
+            }
+            catch (JsonException jsonEx)
+            {
+                MessageBox.Show($"JSON format error in books file: {jsonEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reading or parsing file: {ex.Message}");
+            }
+
+            return books;
+        }
+
+
 
         public void SerializeData(string FilePath)
         {
@@ -322,9 +369,9 @@ namespace LIBDG
                     this.Books = deserializedLibrary.Books;
                     this.Members = deserializedLibrary.Members;
                     this.Transactions = deserializedLibrary.Transactions;
-                }   
+                }
 
-              
+
             }
             catch (Exception ex)
             {
@@ -336,9 +383,9 @@ namespace LIBDG
         {
             try
             {
-                string jsonData = JsonSerializer.Serialize(Books); 
-                File.WriteAllText(filePath, jsonData);
-               
+                // Serialize lại danh sách `Books` hiện tại trong `Library.Instance`
+                string jsonData = JsonSerializer.Serialize(this.Books);
+                File.WriteAllText(filePath, jsonData); // Ghi đè nội dung cũ trong file
             }
             catch (Exception ex)
             {
@@ -346,77 +393,95 @@ namespace LIBDG
             }
         }
 
+
+
+
         // load riêng danh sách Books từ file JSON
-        public void DeserializeBooksData(string filePath)
+        public List<Book> DeserializeBooksData(string filePath)
         {
             try
             {
-                string jsonData = File.ReadAllText(filePath);
-                List<Book> deserializedBooks = JsonSerializer.Deserialize<List<Book>>(jsonData);
-
-                if (deserializedBooks != null)
+                if (!File.Exists(filePath))
                 {
-                    this.Books = deserializedBooks; // Gán danh sách Books sau khi deserialization
+                    MessageBox.Show($"File '{filePath}' not found.");
+                    return new List<Book>();
                 }
 
-                
+                string jsonData = File.ReadAllText(filePath);
+
+                if (string.IsNullOrWhiteSpace(jsonData))
+                {
+                    MessageBox.Show("Books data file is empty.");
+                    return new List<Book>();
+                }
+
+                return JsonSerializer.Deserialize<List<Book>>(jsonData) ?? new List<Book>();
+            }
+            catch (JsonException jsonEx)
+            {
+                MessageBox.Show($"JSON format error in books file: {jsonEx.Message}");
+                return new List<Book>();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error deserializing books data: {ex.Message}");
+                return new List<Book>();
             }
         }
 
+
+
         // lưu danh sách Members 
-        public void SerializeMembersData(string filePath) 
+        public void SerializeMembersData(string filePath)
         {
             try
             {
-                string jsonData = JsonSerializer.Serialize(Members);
+                // Ghi đè toàn bộ danh sách `Members` hiện tại
+                string jsonData = JsonSerializer.Serialize(this.Members);
                 File.WriteAllText(filePath, jsonData);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error serializing members data: {ex.Message}");
             }
         }
+
+
         // Tải danh sách Members
-        public void DeserializeMembersData(string filePath)
+        public List<Member> DeserializeMembersData(string filePath)
         {
             try
             {
+                if (!File.Exists(filePath))
+                    return new List<Member>();
+
                 string jsonData = File.ReadAllText(filePath);
-                List<Member> deserializedMembers = JsonSerializer.Deserialize<List<Member>>(jsonData);
-
-                if (deserializedMembers != null)
-                {
-                    this.Members = deserializedMembers;
-                }
-
-               
+                return JsonSerializer.Deserialize<List<Member>>(jsonData) ?? new List<Member>();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error deserializing members data: {ex.Message}");
+                return new List<Member>(); // Trả về danh sách rỗng nếu có lỗi
             }
         }
+
         public List<Member> LoadMembersFromJsonAndFind(string filePath, string searchTerm)
         {
             List<Member> foundMembers = new List<Member>();
 
-          
+
             if (!File.Exists(filePath))
             {
                 MessageBox.Show("File not found.");
-                return foundMembers; 
+                return foundMembers;
             }
 
             try
             {
-                
+
                 string jsonData = File.ReadAllText(filePath);
 
-                
+
                 List<Member> loadedMembers = JsonSerializer.Deserialize<List<Member>>(jsonData);
 
                 foreach (Member member in loadedMembers)
@@ -436,41 +501,114 @@ namespace LIBDG
                 return foundMembers;
             }
         }
+        public List<Member> LoadMembersFromFile(string filePath)
+        {
+            List<Member> members = new List<Member>();
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("File not found.");
+                return members;
+            }
+
+            try
+            {
+                string jsonData = File.ReadAllText(filePath);
+                members = JsonSerializer.Deserialize<List<Member>>(jsonData) ?? new List<Member>();
+                Console.WriteLine("Number of members loaded: " + members.Count);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reading or parsing file: {ex.Message}");
+            }
+
+            return members;
+        }
+
 
 
         //lưu danh sách Transaction 
         public void SerializeTransactionsData(string filePath)
         {
             try
-            { 
-                string jsonData = JsonSerializer.Serialize(Transactions);
-                File.WriteAllText (filePath, jsonData); 
+            {
+                // Serialize danh sách giao dịch hiện tại trong Library.Instance.Transactions và ghi đè file
+                string jsonData = JsonSerializer.Serialize(this.Transactions);
+                File.WriteAllText(filePath, jsonData);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error serializing transactions data: {ex.Message}");
             }
         }
+
+
         //load danh sách transaction 
-        public void DeserializeTransactionsData(string filePath)
+        public List<Transaction> DeserializeTransactionsData(string filePath)
         {
             try
             {
-                string jsonData = File.ReadAllText(filePath);
-                List<Transaction> deserializedTransactions = JsonSerializer.Deserialize<List<Transaction>>(jsonData);
-
-                if (deserializedTransactions != null)
+                if (!File.Exists(filePath))
                 {
-                    this.Transactions = deserializedTransactions;
+                    MessageBox.Show($"File '{filePath}' not found.");
+                    return new List<Transaction>();
                 }
 
-             
+                string jsonData = File.ReadAllText(filePath);
+
+                if (string.IsNullOrWhiteSpace(jsonData))
+                {
+                    MessageBox.Show("Transaction data file is empty.");
+                    return new List<Transaction>();
+                }
+
+                return JsonSerializer.Deserialize<List<Transaction>>(jsonData) ?? new List<Transaction>();
+            }
+            catch (JsonException jsonEx)
+            {
+                MessageBox.Show($"JSON format error in transactions file: {jsonEx.Message}");
+                return new List<Transaction>();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error deserializing transactions data: {ex.Message}");
+                return new List<Transaction>();
             }
         }
+
+
+        public List<Transaction> LoadTransactionsForMember(string filePath, int memberID)
+        {
+            List<Transaction> transactions = new List<Transaction>();
+
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("File not found.");
+                return transactions;
+            }
+
+            try
+            {
+                string jsonData = File.ReadAllText(filePath);
+                List<Transaction> loadedTransactions = JsonSerializer.Deserialize<List<Transaction>>(jsonData) ?? new List<Transaction>();
+
+                // Chỉ thêm các giao dịch chưa trả
+                foreach (Transaction transaction in loadedTransactions)
+                {
+                    if (transaction.Member.MemberID == memberID && !transaction.IsReturned)
+                    {
+                        transactions.Add(transaction);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error reading or parsing file: {ex.Message}");
+            }
+
+            return transactions;
+        }
+
+
 
     }
 

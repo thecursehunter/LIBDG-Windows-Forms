@@ -33,8 +33,8 @@ namespace LIBDG
             }
         }
 
-       
-      
+
+
 
 
 
@@ -52,6 +52,7 @@ namespace LIBDG
             Library.Instance.UpdateBook(updatedBook);
 
             Library.Instance.SerializeBooksData("books.json");
+            MessageBox.Show("This book has been updated");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -74,12 +75,12 @@ namespace LIBDG
             string searchTerm = txtSearch.Text;
             string filePath = "books.json";
             List<Book> foundBooks = Library.Instance.LoadBooksFromJsonAndFind(filePath, searchTerm);
-            if(foundBooks.Count == 0)
+            if (foundBooks.Count == 0)
             {
                 MessageBox.Show("No book found with the provided information.");
                 return;
-            } 
-                
+            }
+
             DisplayBooksInDataGridView(foundBooks);
         }
 
