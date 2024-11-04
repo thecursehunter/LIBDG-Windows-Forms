@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LIBDG
 {
@@ -21,69 +22,37 @@ namespace LIBDG
             Book = book;
             BorrowDate = borrowDate;
             ReturnDate = returnDate;
-            IsReturned = false; 
+            IsReturned = false;
         }
 
         public void CompleteBorrowing()
         {
             if (Book.AvailableCopies > 0)
             {
-                Member.BorrowBook(Book); 
-                Console.WriteLine($"Transaction {TransactionID} completed: {Member.Name} borrowed {Book.Title}.");
+                Member.BorrowBook(Book);
+                MessageBox.Show($"Transaction {TransactionID} completed: {Member.Name} borrowed {Book.Title}.");
             }
             else
             {
-                Console.WriteLine($"The book {Book.Title} is not available.");
+                MessageBox.Show($"The book {Book.Title} is not available.");
             }
         }
 
-        
+
         public void CompleteReturn()
         {
             if (!IsReturned)
             {
-                Member.ReturnBook(Book); 
+                Member.ReturnBook(Book);
                 IsReturned = true;
-                Console.WriteLine($"Transaction {TransactionID} completed: {Member.Name} returned {Book.Title}.");
+
             }
             else
             {
-                Console.WriteLine($"This transaction has already been completed (book returned).");
+                MessageBox.Show($"This transaction has already been completed (book returned).");
             }
-        }
-        
-        public bool IsOverdue()
-        {
-            if (!IsReturned && DateTime.Now > ReturnDate)
-            {
-                Console.WriteLine($"The book {Book.Title} is overdue.");
-                return true;
-            }
-            return false;
         }
 
-        public void ExtendBorrowing(int additionalDays)
-        {
-            if (!IsReturned)
-            {
-                ReturnDate = ReturnDate.AddDays( additionalDays );
-                Console.WriteLine($"Borrowing period extended for {additionalDays} days. New return date: {ReturnDate.ToShortDateString()}.");
-            }
-            else
-            {
-                Console.WriteLine($"Cannot extend borrowing period. The book has already been returned.");
-            }
-        }
-        
-        public void DisplayTransactionInfo()
-        {
-            string status = IsReturned ? "Returned" : "Not Returned";
-            Console.WriteLine($"Transaction ID: {TransactionID}");
-            Console.WriteLine($"Member: {Member.Name}");
-            Console.WriteLine($"Book: {Book.Title}");
-            Console.WriteLine($"Borrow Date: {BorrowDate.ToShortDateString()}");
-            Console.WriteLine($"Return Date: {ReturnDate.ToShortDateString()}");
-            Console.WriteLine($"Status: {status}");
-        }
+
     }
 }

@@ -17,40 +17,40 @@ namespace LIBDG
             InitializeComponent();
         }
 
-       
-            private void buttonSearchMember_Click(object sender, EventArgs e)
+
+        private void buttonSearchMember_Click(object sender, EventArgs e)
+        {
+            string searchTerm = textBoxSearchMember.Text.Trim();
+
+
+            if (string.IsNullOrEmpty(searchTerm))
             {
-                string searchTerm = textBoxSearchMember.Text.Trim();
-
-                
-                if (string.IsNullOrEmpty(searchTerm))
-                {
-                    MessageBox.Show("Please enter a Name to search.");
-                    return; 
-                }
-
-                
-                string membersFilePath = "members.json";
-
-              
-                List<Member> foundMembers = Library.Instance.LoadMembersFromJsonAndFind(membersFilePath, searchTerm);
-
-              
-                if (foundMembers.Count == 0)
-                {
-                    MessageBox.Show("No member found with the provided information.");
-                    return;
-                }
-
-                
-                DisplayMembersInDataGridView(foundMembers);
+                MessageBox.Show("Please enter a Name to search.");
+                return;
             }
+
+
+            string membersFilePath = "members.json";
+
+
+            List<Member> foundMembers = Library.Instance.LoadMembersFromJsonAndFind(membersFilePath, searchTerm);
+
+
+            if (foundMembers.Count == 0)
+            {
+                MessageBox.Show("No member found with the provided information.");
+                return;
+            }
+
+
+            DisplayMembersInDataGridView(foundMembers);
+        }
         private void DisplayMembersInDataGridView(List<Member> members)
         {
-            
+
             dataGridViewMembers.Rows.Clear();
 
-        
+
             if (dataGridViewMembers.Columns.Count == 0)
             {
                 dataGridViewMembers.Columns.Add("MemberID", "Member ID");
@@ -80,6 +80,7 @@ namespace LIBDG
             Library.Instance.UpdateMemberInfo(updatedMember);
 
             Library.Instance.SerializeMembersData("members.json");
+            MessageBox.Show("Member information has been updated");
         }
 
         private void button2_Click(object sender, EventArgs e)

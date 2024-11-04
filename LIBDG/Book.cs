@@ -30,9 +30,9 @@ namespace LIBDG
             AvailableCopies = copies;
         }
 
-        
 
-        
+
+
 
 
         public void BorrowBook()
@@ -40,18 +40,18 @@ namespace LIBDG
             if (AvailableCopies > 0)
             {
                 AvailableCopies--;
-                Console.WriteLine($"{Title} has been borrowed. Copies left: {AvailableCopies}");
+                MessageBox.Show($"{Title} has been borrowed. Copies left: {AvailableCopies}");
             }
             else
             {
-                Console.WriteLine($"{Title} is currently not available.");
+                MessageBox.Show($"{Title} is currently not available.");
             }
         }
 
         public void ReturnBook()
         {
             AvailableCopies++;
-            Console.WriteLine($"{Title} has been returned. Copies now: {AvailableCopies}");
+            MessageBox.Show($"{Title} has been returned. Copies now: {AvailableCopies}");
         }
         //Lưu riêng danh sách books ra file json 
         public void SerializeData(string filePath)
@@ -74,11 +74,11 @@ namespace LIBDG
 
             if (deserializeBook != null)
             {
-                this.Title = deserializeBook.Title; 
+                this.Title = deserializeBook.Title;
                 this.Author = deserializeBook.Author;
-                this.ISBN = deserializeBook.ISBN; 
-                this.PublishedYear = deserializeBook.PublishedYear; 
-                this.AvailableCopies = deserializeBook.AvailableCopies; 
+                this.ISBN = deserializeBook.ISBN;
+                this.PublishedYear = deserializeBook.PublishedYear;
+                this.AvailableCopies = deserializeBook.AvailableCopies;
             }
 
 

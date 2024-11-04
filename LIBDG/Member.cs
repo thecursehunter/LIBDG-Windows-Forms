@@ -38,7 +38,7 @@ namespace LIBDG
             }
         }
 
-        public void DeserializeData(string FilePath) 
+        public void DeserializeData(string FilePath)
         {
             try
             {
@@ -61,16 +61,16 @@ namespace LIBDG
         }
 
 
-        public void BorrowBook(Book book)      
+        public void BorrowBook(Book book)
         {
             book.BorrowBook();
-            Console.WriteLine($"{Name} has borrowed the book: {book.Title}");
+
         }
 
         public void ReturnBook(Book book)
         {
             book.ReturnBook();
-            Console.WriteLine($"{Name} has returned the book: {book.Title}");
+
         }
 
     }
