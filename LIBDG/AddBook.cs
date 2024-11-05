@@ -19,20 +19,22 @@ namespace LIBDG
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string title = textBox1.Text;
-            string author = textBox2.Text;
-            int publishYear = int.Parse(textBox3.Text);
-            string isbn = textBox4.Text;
-            int quantity = int.Parse(textBox5.Text);
+            string title = textBox1.Text.Trim();
+            string author = textBox2.Text.Trim();
+            string isbn = textBox4.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(author) ||
-                string.IsNullOrWhiteSpace(isbn) || !int.TryParse(textBox3.Text, out publishYear) ||
-                !int.TryParse(textBox5.Text, out quantity)
-                )
+            
+            if (string.IsNullOrWhiteSpace(title) ||
+                string.IsNullOrWhiteSpace(author) ||
+                string.IsNullOrWhiteSpace(isbn) ||
+                !int.TryParse(textBox3.Text, out int publishYear) || publishYear > DateTime.Now.Year ||
+                !int.TryParse(textBox5.Text, out int quantity) || quantity <= 0 )               
             {
-                MessageBox.Show("Please check book info again.");
+                MessageBox.Show("Please check book info again. Make sure all fields are correctly filled.");
                 return;
             }
+
+
             Book newBook = new Book(title, author, isbn, publishYear, quantity);
 
             Library.Instance.AddBook(newBook);
@@ -40,16 +42,12 @@ namespace LIBDG
             FileHandler fileHandler = new FileHandler();
             string booksFilePath = "books.json";
             fileHandler.SaveBooksData(booksFilePath);
-            MessageBox.Show("Books saved successfully!");
-
-
-
+            
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
             textBox5.Clear();
-
         }
 
         private void button2_Click(object sender, EventArgs e)

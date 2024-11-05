@@ -129,6 +129,12 @@ namespace LIBDG
 
             if (transactionToReturn != null)
             {
+                if (updatedReturnDate < transactionToReturn.BorrowDate)
+                {
+                    MessageBox.Show("Return date cannot be before the borrow date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                
                 transactionToReturn.ReturnDate = updatedReturnDate;
                 transactionToReturn.CompleteReturn();
 

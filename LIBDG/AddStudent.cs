@@ -18,26 +18,20 @@ namespace LIBDG
         }
 
         private void buttonAddMember_Click(object sender, EventArgs e)
-        {
-            
-            if (!int.TryParse(textBoxMemberID.Text, out int memberID))
+        {                      
+            string name = textBoxName.Text.Trim();
+            string email = textBoxEmail.Text.Trim();
+
+            if (!int.TryParse(textBoxMemberID.Text, out int memberID) || memberID <= 0 ||
+                string.IsNullOrWhiteSpace(name) ||
+                string.IsNullOrWhiteSpace(email) ||
+                !System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
-                MessageBox.Show("Please enter a valid Member ID.");
+                MessageBox.Show("Please check the member information. Ensure all fields are filled and valid.");
                 return;
             }
 
-            string name = textBoxName.Text;
-            string email = textBoxEmail.Text;
-
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(email))
-            {
-                MessageBox.Show("Please check again student info");
-                return;
-            }
-
-            
             Member newMember = new Member(memberID, name, email);
-
          
             Library.Instance.RegisterMember(newMember);
 
@@ -45,9 +39,6 @@ namespace LIBDG
             string membersFilePath = "members.json";
             fileHandler.SaveMembersData(membersFilePath);
 
-            MessageBox.Show("Member added and saved successfully!");
-
-            
             textBoxMemberID.Clear();
             textBoxName.Clear();
             textBoxEmail.Clear();

@@ -71,7 +71,7 @@
             this.panel3.Location = new System.Drawing.Point(16, 140);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(553, 3452);
+            this.panel3.Size = new System.Drawing.Size(553, 3661);
             this.panel3.TabIndex = 10;
             // 
             // button3
@@ -151,7 +151,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Font = new System.Drawing.Font("Consolas", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(799, 43);
+            this.label1.Location = new System.Drawing.Point(788, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 34);
@@ -179,7 +179,7 @@
             this.panel2.Location = new System.Drawing.Point(16, 6);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1528, 127);
+            this.panel2.Size = new System.Drawing.Size(1507, 127);
             this.panel2.TabIndex = 11;
             // 
             // dataGridViewTransactions
@@ -192,7 +192,7 @@
             this.dataGridViewTransactions.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewTransactions.Name = "dataGridViewTransactions";
             this.dataGridViewTransactions.RowHeadersWidth = 51;
-            this.dataGridViewTransactions.Size = new System.Drawing.Size(965, 511);
+            this.dataGridViewTransactions.Size = new System.Drawing.Size(944, 511);
             this.dataGridViewTransactions.TabIndex = 12;
             // 
             // panel1
@@ -211,7 +211,7 @@
             this.panel1.Location = new System.Drawing.Point(577, 658);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(965, 217);
+            this.panel1.Size = new System.Drawing.Size(944, 217);
             this.panel1.TabIndex = 13;
             // 
             // btnReturnBook
