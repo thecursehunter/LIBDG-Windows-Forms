@@ -50,7 +50,7 @@
             this.dataGridViewBorrowedBooks.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewBorrowedBooks.Name = "dataGridViewBorrowedBooks";
             this.dataGridViewBorrowedBooks.RowHeadersWidth = 51;
-            this.dataGridViewBorrowedBooks.Size = new System.Drawing.Size(1351, 415);
+            this.dataGridViewBorrowedBooks.Size = new System.Drawing.Size(1330, 415);
             this.dataGridViewBorrowedBooks.TabIndex = 13;
             // 
             // dataGridViewReturnedBooks
@@ -63,7 +63,7 @@
             this.dataGridViewReturnedBooks.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewReturnedBooks.Name = "dataGridViewReturnedBooks";
             this.dataGridViewReturnedBooks.RowHeadersWidth = 51;
-            this.dataGridViewReturnedBooks.Size = new System.Drawing.Size(1351, 415);
+            this.dataGridViewReturnedBooks.Size = new System.Drawing.Size(1330, 415);
             this.dataGridViewReturnedBooks.TabIndex = 14;
             // 
             // label2

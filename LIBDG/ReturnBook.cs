@@ -25,7 +25,7 @@ namespace LIBDG
             }
 
             // **Tải lại danh sách giao dịch từ file JSON**
-            Library.Instance.Transactions = Library.Instance.DeserializeTransactionsData("transactions.json");
+            Library.Instance.DeserializeTransactionsData("transactions.json");
 
             List<Transaction> memberTransactions = Library.Instance.Transactions
                 .Where(transaction => transaction.Member.MemberID == memberID && !transaction.IsReturned)
@@ -87,6 +87,8 @@ namespace LIBDG
         {
             dataGridViewTransactions.Rows.Clear();
 
+            
+
             foreach (Transaction transaction in Library.Instance.Transactions)
             {
                 if (transaction.Member.MemberID == memberID && !transaction.IsReturned)
@@ -134,9 +136,12 @@ namespace LIBDG
 
                 // **Lưu danh sách giao dịch ngay sau khi cập nhật `IsReturned`**
                 Library.Instance.SerializeTransactionsData("transactions.json");
+                
 
                 // Làm mới lại `DataGridView` để chỉ hiển thị các giao dịch chưa trả
                 LoadBorrowedBooksForMember(studentID);
+                
+                
             }
             else
             {
