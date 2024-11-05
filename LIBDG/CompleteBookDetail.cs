@@ -32,7 +32,9 @@ namespace LIBDG
         private void LoadTransactionData()
         {
             // Tải lại danh sách giao dịch từ file
-            Library.Instance.Transactions = Library.Instance.DeserializeTransactionsData("transactions.json");
+            Library.Instance.DeserializeTransactionsData("transactions.json");
+
+
 
             dataGridViewBorrowedBooks.Rows.Clear();
             dataGridViewReturnedBooks.Rows.Clear();

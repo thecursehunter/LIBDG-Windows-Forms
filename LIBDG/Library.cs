@@ -409,11 +409,7 @@ namespace LIBDG
 
                 string jsonData = File.ReadAllText(filePath);
 
-                if (string.IsNullOrWhiteSpace(jsonData))
-                {
-                    MessageBox.Show("Books data file is empty.");
-                    return new List<Book>();
-                }
+              
 
                 return JsonSerializer.Deserialize<List<Book>>(jsonData) ?? new List<Book>();
             }
@@ -555,11 +551,7 @@ namespace LIBDG
 
                 string jsonData = File.ReadAllText(filePath);
 
-                if (string.IsNullOrWhiteSpace(jsonData))
-                {
-                    MessageBox.Show("Transaction data file is empty.");
-                    return new List<Transaction>();
-                }
+            
 
                 return JsonSerializer.Deserialize<List<Transaction>>(jsonData) ?? new List<Transaction>();
             }
