@@ -10,6 +10,7 @@ namespace LIBDG
         public ViewBook()
         {
             InitializeComponent();
+            dataGridViewBooks.CellClick += dataGridViewBooks_CellClick;
         }
         private void DisplayBooksInDataGridView(List<Book> books)
         {
@@ -30,6 +31,22 @@ namespace LIBDG
             foreach (Book book in books)
             {
                 dataGridViewBooks.Rows.Add(book.Title, book.Author, book.ISBN, book.PublishedYear, book.AvailableCopies);
+            }
+        }
+        private void dataGridViewBooks_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if (e.RowIndex >= 0)
+            {
+                
+                DataGridViewRow selectedRow = dataGridViewBooks.Rows[e.RowIndex];
+
+                
+                txtTitle.Text = selectedRow.Cells["Title"].Value.ToString();
+                txtAuthor.Text = selectedRow.Cells["Author"].Value.ToString();
+                txtISBN.Text = selectedRow.Cells["ISBN"].Value.ToString();
+                txtPublishedYear.Text = selectedRow.Cells["PublishedYear"].Value.ToString();
+                txtBookQuantity.Text = selectedRow.Cells["AvailableCopies"].Value.ToString();
             }
         }
 

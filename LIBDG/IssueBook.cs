@@ -50,7 +50,7 @@ namespace LIBDG
         {
 
             string booksFilePath = "books.json";
-            List<Book> books = Library.Instance.LoadBooksFromFile(booksFilePath);
+            List<Book> books = Library.Instance.DeserializeBooksData(booksFilePath);
 
             Library.Instance.Books = books;
 
@@ -67,7 +67,7 @@ namespace LIBDG
             }
 
             string membersFilePath = "members.json";
-            List<Member> members = Library.Instance.LoadMembersFromFile(membersFilePath);
+            List<Member> members = Library.Instance.DeserializeMembersData(membersFilePath);
 
             // Gán danh sách members vào Library.Instance.Members
             Library.Instance.Members = members;
@@ -168,5 +168,16 @@ namespace LIBDG
             comboBoxBookTitles.SelectedIndex = -1;
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBoxStudentID.Clear();
+            textBoxStudentName.Clear();
+            textBoxStudentEmail.Clear();
+        }
     }
 }
