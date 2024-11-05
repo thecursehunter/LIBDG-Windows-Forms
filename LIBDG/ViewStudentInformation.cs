@@ -15,6 +15,7 @@ namespace LIBDG
         public ViewStudentInformation()
         {
             InitializeComponent();
+            dataGridViewMembers.CellClick += dataGridViewMembers_CellClick;
         }
 
 
@@ -63,6 +64,21 @@ namespace LIBDG
                 dataGridViewMembers.Rows.Add(member.MemberID, member.Name, member.Email);
             }
         }
+        private void dataGridViewMembers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+            if (e.RowIndex >= 0)
+            {
+               
+                DataGridViewRow selectedRow = dataGridViewMembers.Rows[e.RowIndex];
+
+               
+                txtStudentID.Text = selectedRow.Cells["MemberID"].Value.ToString();
+                txtStudentName.Text = selectedRow.Cells["Name"].Value.ToString();
+                txtStudentEmail.Text = selectedRow.Cells["Email"].Value.ToString();
+            }
+        }
+
 
         private void button4_Click(object sender, EventArgs e)
         {

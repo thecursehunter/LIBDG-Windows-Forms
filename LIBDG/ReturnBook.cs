@@ -155,8 +155,18 @@ namespace LIBDG
             }
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBoxBookTitle.Clear();
+            textBoxBorrowDate.Clear();
+            dateTimePickerReturnDate.Refresh();
+            dataGridViewTransactions.Rows.Clear();
+        }
     }
 
 

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 using System.Windows.Forms;
 
@@ -222,53 +220,7 @@ namespace LIBDG
             return null;
         }
 
-        public void BorrowBook(int memberID, string isbn)
-        {
-            Member member = FindMemberByID(memberID);
-            Book book = FindBookByISBN(isbn);
-            if (member != null && book != null && book.AvailableCopies > 0)
-            {
-                Transaction transaction = new Transaction(Transactions.Count + 1, member, book, DateTime.Now, DateTime.Now.AddDays(14));
-                transaction.CompleteBorrowing();
-                Transactions.Add(transaction);
-                Console.WriteLine($"Transaction {transaction.TransactionID} created for {member.Name} to borrow {book.Title}.");
-            }
-            else
-            {
-                Console.WriteLine("Cannot complete borrowing. Book might be unavailable or member not found.");
-            }
 
-        }
-        public void ReturnBook(int memberID, string isbn)
-        {
-            //biến để lưu giao dịch trả sách nếu tìm thấy 
-            Transaction transactiontoReturn = null;
-
-            // Tìm giao dịch với memberid và isbn khớp 
-            for (int i = 0; i < Transactions.Count; i++)
-            {
-                if (Transactions[i].Member.MemberID == memberID &&
-                    Transactions[i].Book.ISBN == isbn &&
-                                                !Transactions[i].IsReturned)
-                {
-                    transactiontoReturn = Transactions[i];
-                    break;
-                }
-
-            }
-
-            if (transactiontoReturn != null)
-            {
-                transactiontoReturn.CompleteReturn();
-                Console.WriteLine($"Transaction {transactiontoReturn.TransactionID} completed: {transactiontoReturn.Member.Name} returned {transactiontoReturn.Book.Title}.");
-            }
-            else
-            {
-                Console.WriteLine($"No matching transaction found for Member ID {memberID} and ISBN {isbn}.");
-            }
-
-
-        }
         public List<Book> LoadBooksFromJsonAndFind(string filePath, string title)
         {
             List<Book> foundBooks = new List<Book>();
@@ -306,39 +258,7 @@ namespace LIBDG
                 return foundBooks;
             }
         }
-        public List<Book> LoadBooksFromFile(string filePath)
-        {
-            List<Book> books = new List<Book>();
 
-            if (!File.Exists(filePath))
-            {
-                MessageBox.Show($"File '{filePath}' not found.");
-                return books;
-            }
-
-            try
-            {
-                string jsonData = File.ReadAllText(filePath);
-
-                if (string.IsNullOrWhiteSpace(jsonData))
-                {
-                    MessageBox.Show("Books file is empty.");
-                    return books;
-                }
-
-                books = JsonSerializer.Deserialize<List<Book>>(jsonData) ?? new List<Book>();
-            }
-            catch (JsonException jsonEx)
-            {
-                MessageBox.Show($"JSON format error in books file: {jsonEx.Message}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error reading or parsing file: {ex.Message}");
-            }
-
-            return books;
-        }
 
 
 
@@ -383,7 +303,7 @@ namespace LIBDG
         {
             try
             {
-                // Serialize lại danh sách `Books` hiện tại trong `Library.Instance`
+                // Serialize lại danh sách Books hiện tại trong Library.Instance
                 string jsonData = JsonSerializer.Serialize(this.Books);
                 File.WriteAllText(filePath, jsonData); // Ghi đè nội dung cũ trong file
             }
@@ -401,26 +321,22 @@ namespace LIBDG
         {
             try
             {
-                if (!File.Exists(filePath))
-                {
-                    MessageBox.Show($"File '{filePath}' not found.");
-                    return new List<Book>();
-                }
+
 
                 string jsonData = File.ReadAllText(filePath);
 
-              
+
 
                 return JsonSerializer.Deserialize<List<Book>>(jsonData) ?? new List<Book>();
             }
-            catch (JsonException jsonEx)
+            catch (JsonException)
             {
-                MessageBox.Show($"JSON format error in books file: {jsonEx.Message}");
+
                 return new List<Book>();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Error deserializing books data: {ex.Message}");
+
                 return new List<Book>();
             }
         }
@@ -432,13 +348,13 @@ namespace LIBDG
         {
             try
             {
-                // Ghi đè toàn bộ danh sách `Members` hiện tại
+                // Ghi đè toàn bộ danh sách Members hiện tại
                 string jsonData = JsonSerializer.Serialize(this.Members);
                 File.WriteAllText(filePath, jsonData);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Error serializing members data: {ex.Message}");
+
             }
         }
 
@@ -448,15 +364,14 @@ namespace LIBDG
         {
             try
             {
-                if (!File.Exists(filePath))
-                    return new List<Member>();
+
 
                 string jsonData = File.ReadAllText(filePath);
                 return JsonSerializer.Deserialize<List<Member>>(jsonData) ?? new List<Member>();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Error deserializing members data: {ex.Message}");
+
                 return new List<Member>(); // Trả về danh sách rỗng nếu có lỗi
             }
         }
@@ -493,32 +408,11 @@ namespace LIBDG
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error reading or parsing file: {ex.Message}");
+
                 return foundMembers;
             }
         }
-        public List<Member> LoadMembersFromFile(string filePath)
-        {
-            List<Member> members = new List<Member>();
-            if (!File.Exists(filePath))
-            {
-                MessageBox.Show("File not found.");
-                return members;
-            }
-
-            try
-            {
-                string jsonData = File.ReadAllText(filePath);
-                members = JsonSerializer.Deserialize<List<Member>>(jsonData) ?? new List<Member>();
-                Console.WriteLine("Number of members loaded: " + members.Count);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error reading or parsing file: {ex.Message}");
-            }
-
-            return members;
-        }
+        
 
 
 
@@ -531,9 +425,9 @@ namespace LIBDG
                 string jsonData = JsonSerializer.Serialize(this.Transactions);
                 File.WriteAllText(filePath, jsonData);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Error serializing transactions data: {ex.Message}");
+
             }
         }
 
@@ -543,26 +437,22 @@ namespace LIBDG
         {
             try
             {
-                if (!File.Exists(filePath))
-                {
-                    MessageBox.Show($"File '{filePath}' not found.");
-                    return new List<Transaction>();
-                }
+
 
                 string jsonData = File.ReadAllText(filePath);
 
-            
+
 
                 return JsonSerializer.Deserialize<List<Transaction>>(jsonData) ?? new List<Transaction>();
             }
-            catch (JsonException jsonEx)
+            catch (JsonException)
             {
-                MessageBox.Show($"JSON format error in transactions file: {jsonEx.Message}");
+
                 return new List<Transaction>();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Error deserializing transactions data: {ex.Message}");
+
                 return new List<Transaction>();
             }
         }
