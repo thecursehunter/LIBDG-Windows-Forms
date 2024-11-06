@@ -114,7 +114,6 @@
     </Compile>
     <Compile Include="IBorrowable.cs" />
     <Compile Include="ISerializable.cs" />
-    <Compile Include="Librarian.cs" />
     <Compile Include="Library.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Person.cs" />
