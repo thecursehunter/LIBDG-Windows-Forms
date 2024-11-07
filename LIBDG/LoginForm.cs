@@ -15,6 +15,7 @@ namespace LIBDG
         public LoginForm()
         {
             InitializeComponent();
+            Library.Instance.Initialize();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -37,11 +37,11 @@ namespace LIBDG
 
             Book newBook = new Book(title, author, isbn, publishYear, quantity);
 
-            Library.Instance.AddBook(newBook);
+            Library.Instance.Books.AddBook(newBook);
 
-            FileHandler fileHandler = new FileHandler();
+            
             string booksFilePath = "books.json";
-            fileHandler.SaveBooksData(booksFilePath);
+            Library.Instance.Books.SerializeData(booksFilePath);
             
             textBox1.Clear();
             textBox2.Clear();

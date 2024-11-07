@@ -14,7 +14,7 @@ namespace LIBDG
         public Book Book { get; set; }
         public DateTime BorrowDate { get; set; }
         public DateTime ReturnDate { get; set; }
-        public bool IsReturned { get; private set; }
+        public bool IsReturned { get; set; }
         public Transaction(int transactionId, Member member, Book book, DateTime borrowDate, DateTime returnDate)
         {
             TransactionID = transactionId;
@@ -45,7 +45,7 @@ namespace LIBDG
             {
                 Member.ReturnBook(Book);
                 IsReturned = true;
-
+                
             }
             else
             {

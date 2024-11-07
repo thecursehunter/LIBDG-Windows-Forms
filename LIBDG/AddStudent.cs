@@ -33,11 +33,11 @@ namespace LIBDG
 
             Member newMember = new Member(memberID, name, email);
          
-            Library.Instance.RegisterMember(newMember);
+            Library.Instance.Members.RegisterMember(newMember);
 
-            FileHandler fileHandler = new FileHandler();
+            
             string membersFilePath = "members.json";
-            fileHandler.SaveMembersData(membersFilePath);
+            Library.Instance.Members.SerializeData(membersFilePath);
 
             textBoxMemberID.Clear();
             textBoxName.Clear();

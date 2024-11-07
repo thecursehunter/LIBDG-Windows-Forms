@@ -66,9 +66,9 @@ namespace LIBDG
 
             Book updatedBook = new Book(title, author, isbn, publishedYear, quantity);
 
-            Library.Instance.UpdateBook(updatedBook);
+            Library.Instance.Books.UpdateBook(updatedBook);
 
-            Library.Instance.SerializeBooksData("books.json");
+            Library.Instance.Books.SerializeData("books.json");
             MessageBox.Show("This book has been updated");
         }
 
@@ -82,16 +82,16 @@ namespace LIBDG
                 return;
             }
 
-            Library.Instance.RemoveBook(isbn);
+            Library.Instance.Books.RemoveBook(isbn);
 
-            Library.Instance.SerializeBooksData("books.json");
+            Library.Instance.Books.SerializeData("books.json");
         }
 
         private void btnSearch_Click_Click(object sender, EventArgs e)
         {
             string searchTerm = txtSearch.Text;
             string filePath = "books.json";
-            List<Book> foundBooks = Library.Instance.LoadBooksFromJsonAndFind(filePath, searchTerm);
+            List<Book> foundBooks = Library.Instance.Books.LoadBooksFromJsonAndFind(filePath, searchTerm);
             if (foundBooks.Count == 0)
             {
                 MessageBox.Show("No book found with the provided information.");

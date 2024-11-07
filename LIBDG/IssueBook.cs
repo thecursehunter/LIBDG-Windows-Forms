@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LIBDG
@@ -20,15 +14,14 @@ namespace LIBDG
 
         private void buttonSearchStudents_Click(object sender, EventArgs e)
         {
-
             if (!int.TryParse(textBoxSearchStudentID.Text.Trim(), out int memberID))
             {
                 MessageBox.Show("Please enter a valid Student ID.");
                 return;
             }
 
-            string membersFilePath = "members.json";
-            List<Member> foundMembers = Library.Instance.LoadMembersFromJsonAndFind(membersFilePath, memberID.ToString());
+            // Sử dụng phương thức từ ListOfMembers để tìm thành viên
+            List<Member> foundMembers = Library.Instance.Members.LoadMembersFromJsonAndFind("members.json", memberID.ToString());
 
             if (foundMembers.Count == 0)
             {
@@ -36,46 +29,36 @@ namespace LIBDG
                 return;
             }
 
-            //vì mã ID chỉ có 1 nên search ra thì lấy thằng đầu tiên trong mảng
+            // Giả định rằng ID là duy nhất, chỉ lấy thành viên đầu tiên trong danh sách
             Member member = foundMembers[0];
-
 
             textBoxStudentName.Text = member.Name;
             textBoxStudentID.Text = member.MemberID.ToString();
             textBoxStudentEmail.Text = member.Email;
-
-
         }
+
         private void IssueBookForm_Load(object sender, EventArgs e)
         {
-
-            string booksFilePath = "books.json";
-            List<Book> books = Library.Instance.DeserializeBooksData(booksFilePath);
-
-            Library.Instance.Books = books;
+            // Tải dữ liệu sách và cập nhật combobox từ ListOfBooks
+            Library.Instance.Books.DeserializeData("books.json");
 
             comboBoxBookTitles.Items.Clear();
-
-            foreach (Book book in books)
+            foreach (Book book in Library.Instance.Books.Books)
             {
                 comboBoxBookTitles.Items.Add(book.Title);
             }
-            // nếu có giá trị thì tự động chọn mục đầu tiên 
+
             if (comboBoxBookTitles.Items.Count > 0)
             {
                 comboBoxBookTitles.SelectedIndex = 0;
             }
 
-            string membersFilePath = "members.json";
-            List<Member> members = Library.Instance.DeserializeMembersData(membersFilePath);
-
-            // Gán danh sách members vào Library.Instance.Members
-            Library.Instance.Members = members;
+            // Tải danh sách thành viên từ ListOfMembers
+            Library.Instance.Members.DeserializeData("members.json");
         }
 
         private void btnIssueBook_Click(object sender, EventArgs e)
         {
-
             if (string.IsNullOrWhiteSpace(textBoxStudentName.Text) ||
                 string.IsNullOrWhiteSpace(textBoxStudentID.Text) ||
                 string.IsNullOrWhiteSpace(textBoxStudentEmail.Text) ||
@@ -95,8 +78,8 @@ namespace LIBDG
             DateTime borrowDate = dateTimePickerIssueDate.Value;
             DateTime returnDate = borrowDate.AddDays(14);
 
-            // Tìm đối tượng Member dựa trên Student ID
-            Member member = Library.Instance.FindMemberByID(studentID);
+            // Tìm đối tượng Member từ ListOfMembers
+            Member member = Library.Instance.Members.FindMemberByID(studentID);
             if (member == null)
             {
                 MessageBox.Show("Member not found in the library.");
@@ -104,33 +87,32 @@ namespace LIBDG
             }
 
             int borrowedBooksCount = 0;
-            foreach (Transaction transaction1 in Library.Instance.Transactions)
+            foreach (Transaction currenttransaction in Library.Instance.Transactions.Transactions)
             {
-                if (transaction1.Member.MemberID == studentID && !transaction1.IsReturned)
+                if (currenttransaction.Member.MemberID == studentID && !currenttransaction.IsReturned)
                 {
                     borrowedBooksCount++;
-                    //kiểm sách trùng 
-                    if (transaction1.Book.Title.Equals(selectedBookTitle, StringComparison.OrdinalIgnoreCase))
+                    if (currenttransaction.Book.Title.Equals(selectedBookTitle, StringComparison.OrdinalIgnoreCase))
                     {
                         MessageBox.Show("This book has already been borrowed by the member.");
                         return;
                     }
                 }
             }
+
             if (borrowedBooksCount >= 3)
             {
                 MessageBox.Show("A member can borrow up to 3 books only.");
                 return;
             }
 
-
-            Book book = Library.Instance.FindBookByTitle(selectedBookTitle);
+            // Tìm đối tượng Book từ ListOfBooks
+            Book book = Library.Instance.Books.FindBookByTitle(selectedBookTitle);
             if (book == null)
             {
                 MessageBox.Show("Book not found in the library.");
                 return;
             }
-
 
             if (book.AvailableCopies <= 0)
             {
@@ -138,30 +120,22 @@ namespace LIBDG
                 return;
             }
 
-
-
-            // Tạo Transaction mới cho việc mượn sách
+            // Tạo Transaction mới và thêm vào ListOfTransactions
             Transaction transaction = new Transaction(
-                transactionId: Library.Instance.Transactions.Count + 1,
+                transactionId: Library.Instance.Transactions.Transactions.Count + 1,
                 member: member,
                 book: book,
                 borrowDate: borrowDate,
                 returnDate: returnDate
             );
 
-            // Hoàn thành việc mượn sách (giảm số lượng sách có sẵn)
+            // Cập nhật trạng thái mượn sách và lưu lại
             transaction.CompleteBorrowing();
+            Library.Instance.Transactions.Transactions.Add(transaction);
 
+            Library.Instance.Transactions.SerializeData("transactions.json");
 
-
-            Library.Instance.Transactions.Add(transaction);
-
-            FileHandler fileHandler = new FileHandler();
-            string transactionFilePath = "transactions.json";
-            fileHandler.SaveTransactionsData(transactionFilePath);
-
-
-
+            // Xóa thông tin trên form sau khi hoàn thành
             textBoxStudentID.Clear();
             textBoxStudentName.Clear();
             textBoxStudentEmail.Clear();

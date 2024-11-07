@@ -34,7 +34,7 @@ namespace LIBDG
             string membersFilePath = "members.json";
 
 
-            List<Member> foundMembers = Library.Instance.LoadMembersFromJsonAndFind(membersFilePath, searchTerm);
+            List<Member> foundMembers = Library.Instance.Members.LoadMembersFromJsonAndFind(membersFilePath, searchTerm);
 
 
             if (foundMembers.Count == 0)
@@ -93,9 +93,9 @@ namespace LIBDG
 
             Member updatedMember = new Member(memberID, name, email);
 
-            Library.Instance.UpdateMemberInfo(updatedMember);
+            Library.Instance.Members.UpdateMemberInfo(updatedMember);
 
-            Library.Instance.SerializeMembersData("members.json");
+            Library.Instance.Members.SerializeData("members.json");
             MessageBox.Show("Member information has been updated");
         }
 
@@ -103,9 +103,9 @@ namespace LIBDG
         {
             int memberID = int.Parse(txtStudentID.Text);
 
-            Library.Instance.RemoveMember(memberID);
+            Library.Instance.Members.RemoveMember(memberID);
 
-            Library.Instance.SerializeMembersData("members.json");
+            Library.Instance.Members.SerializeData("members.json");
         }
     }
 }
