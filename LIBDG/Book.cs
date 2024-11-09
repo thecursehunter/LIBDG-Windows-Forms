@@ -13,14 +13,51 @@ namespace LIBDG
     [Serializable]
     public class Book : ISerializable
     {
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public string ISBN { get; set; }
-        public int PublishedYear { get; set; }
-        public int AvailableCopies { get; set; }
+        private string _title;
+        private string _author;
+        private string _isbn;
+        private int _publishedYear;
+        private int _availableCopies;
+
+        public string Title
+        {
+            get { return _title; }
+            set { _title = value; } 
+        }
+
+        public string Author
+        {
+            get { return _author; }
+            set { _author = value; }
+        }
+
+        public string ISBN
+        {
+            get { return _isbn; }
+            set { _isbn = value; }
+        }
+
+        public int PublishedYear
+        {
+            get { return _publishedYear; }
+            set
+            {
+                if (value > 0) 
+                    _publishedYear = value;
+            }
+        }
+
+        public int AvailableCopies
+        {
+            get { return _availableCopies; }
+            set
+            {
+                if (value >= 0)
+                    _availableCopies = value;
+            }
+        }
 
         public Book() { }
-
         public Book(string title, string author, string isbn, int year, int copies)
         {
             Title = title;
@@ -63,7 +100,7 @@ namespace LIBDG
             }
             catch (Exception ex)
             {
-                MessageBox.Show("$\"Error serializing books data: {ex.Message}\"");
+                MessageBox.Show($"Error serializing books data: {ex.Message}");
             }
         }
         //tải riêng danh sách books 
