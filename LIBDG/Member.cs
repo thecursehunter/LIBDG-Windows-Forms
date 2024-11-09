@@ -10,13 +10,21 @@ namespace LIBDG
 {
     public class Member : Person, IBorrowable, ISerializable
     {
-        public int MemberID { get; set; }
+        private int _memberID;
 
+        public int MemberID
+        {
+            get { return _memberID; }
+            set { _memberID = value; } 
+        }
+
+        
         public Member() { }
+
+      
         public Member(int memberId, string name, string email) : base(name, email)
         {
             MemberID = memberId;
-
         }
 
         public override void Login()
@@ -29,7 +37,7 @@ namespace LIBDG
             try
             {
                 string jsonData = JsonSerializer.Serialize(this);
-                File.WriteAllText(FilePath, jsonData);  // Ghi dữ liệu JSON ra file
+                File.WriteAllText(FilePath, jsonData);  
                 Console.WriteLine($"Member data serialized to {FilePath}");
             }
             catch (Exception ex)

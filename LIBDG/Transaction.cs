@@ -1,20 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LIBDG
 {
     public class Transaction
     {
-        public int TransactionID { get; set; }
-        public Member Member { get; set; }
-        public Book Book { get; set; }
-        public DateTime BorrowDate { get; set; }
-        public DateTime ReturnDate { get; set; }
-        public bool IsReturned { get; set; }
+        private int _transactionID;
+        private Member _member;
+        private Book _book;
+        private DateTime _borrowDate;
+        private DateTime _returnDate;
+        private bool _isReturned;
+
+        public int TransactionID
+        {
+            get { return _transactionID; }
+            set { _transactionID = value; }
+        }
+
+        public Member Member
+        {
+            get { return _member; }
+            set { _member = value; } 
+        }
+
+        public Book Book
+        {
+            get { return _book; }
+            set { _book = value; } 
+        }
+
+        public DateTime BorrowDate
+        {
+            get { return _borrowDate; }
+            set { _borrowDate = value; }
+        }
+
+        public DateTime ReturnDate
+        {
+            get { return _returnDate; }
+            set { _returnDate = value; } 
+        }
+
+        public bool IsReturned
+        {
+            get { return _isReturned; }
+            set { _isReturned = value; } 
+        }
+
+        public Transaction() { }
         public Transaction(int transactionId, Member member, Book book, DateTime borrowDate, DateTime returnDate)
         {
             TransactionID = transactionId;
@@ -45,7 +79,7 @@ namespace LIBDG
             {
                 Member.ReturnBook(Book);
                 IsReturned = true;
-                
+
             }
             else
             {
